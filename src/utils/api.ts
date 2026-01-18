@@ -1,17 +1,37 @@
 import axios from 'axios';
 
-// API base URL - adjust as needed for your deployment
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// Function to get API base URL at runtime
+const getApiBaseUrl = (): string => {
+  if (typeof window !== 'undefined') {
+    // Client-side: try to get from environment or use a default
+    return process.env.NEXT_PUBLIC_API_URL || "https://web-production-e4e27.up.railway.app";
+  }
+  // Server-side (during build): fallback to environment
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+};
 
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: API_BASE_URL,
   timeout: 30000, // 30 seconds timeout
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer test-token`, // Using the test token from the backend
   },
 });
+
+// Request interceptor to set base URL dynamically
+api.interceptors.request.use(
+  (config) => {
+    const baseUrl = getApiBaseUrl();
+    if (!config.baseURL && !config.url?.startsWith('http')) {
+      config.baseURL = baseUrl;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 // Request interceptor to add auth token
 api.interceptors.request.use(
