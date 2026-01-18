@@ -3,7 +3,7 @@
 import { useState } from "react"
 import axios from "axios"
 
-const API_BASE = "http://localhost:8000"
+const API_BASE = "https://web-production-e4e27.up.railway.app/"
 
 export function useConjunctionScreening() {
   const [results, setResults] = useState<any>(null)
