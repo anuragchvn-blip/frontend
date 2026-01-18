@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-space-black: #080808;
+  --color-space-dark: #0f0f0f;
+  --color-cosmic-blue: #557099;
+  --color-cosmic-deep: #1a1a2e;
+  --color-stellar-cyan: #ffffff; /* Primary text is white */
+  --color-stellar-grey: rgba(255, 255, 255, 0.6);
+  --color-stellar-glow: rgba(85, 112, 153, 0.4);
+  
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-serif: var(--font-playfair); /* For the cinematic feel */
+}
+
+:root {
+  --background: #080808;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Refined */
+.glass-panel {
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Pill Buttons */
+.btn-pill {
+  border-radius: 929px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+  background: #ffffff;
+  color: #080808;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* HUD Markers */
+.hud-corner::before,
+.hud-corner::after,
+.hud-corner > span::before,
+.hud-corner > span::after {
+  content: '+';
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1;
+}
+
+.hud-corner::before { top: -6px; left: -6px; }
+.hud-corner::after { top: -6px; right: -6px; }
+.hud-corner > span::before { bottom: -6px; left: -6px; }
+.hud-corner > span::after { bottom: -6px; right: -6px; }
+
+/* Typography */
+.text-cinematic {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+.text-technical {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--color-stellar-grey);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Atmospheric Glow */
+.atmospheric-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at 50% 100%, var(--color-stellar-glow) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
