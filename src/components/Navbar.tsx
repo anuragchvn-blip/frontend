@@ -15,6 +15,7 @@ export default function Navbar() {
     { name: "Catalog", href: "/catalog" },
     { name: "Intelligence", href: "/security" },
     { name: "Systems", href: "/settings" },
+    { name: "Team", href: "/team" },
   ]
 
   return (
