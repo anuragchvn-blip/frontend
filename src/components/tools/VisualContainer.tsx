@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { useMemo } from "react"
-import type { Layout, Data } from "plotly.js"
 
 // Dynamically import Plotly with no SSR to avoid window not found errors
 const Plot = dynamic(() => import("react-plotly.js"), { 
@@ -22,7 +21,7 @@ interface VisualContainerProps {
 export default function VisualContainer({ type }: VisualContainerProps) {
   
   // 3D Orbital Globe Config
-  const orbitData = useMemo<Data[]>(() => {
+  const orbitData = useMemo<any[]>(() => {
     // Generate some random satellite paths
     const paths = Array.from({ length: 8 }).map((_, i) => {
         const t = Array.from({ length: 100 }, (_, k) => k / 10);
@@ -42,11 +41,11 @@ export default function VisualContainer({ type }: VisualContainerProps) {
             },
             showlegend: false,
             hoverinfo: 'none'
-        } as Data;
+        };
     });
 
     // Central Earth-like Sphere
-    const sphere: Data = {
+    const sphere: any = {
         type: 'mesh3d',
         x: [0], y: [0], z: [0], // Simplification, in reality would use a proper mesh
         alphahull: 0,
@@ -57,7 +56,7 @@ export default function VisualContainer({ type }: VisualContainerProps) {
     return [...paths]
   }, []);
 
-  const orbitLayout: Partial<Layout> = {
+  const orbitLayout: any = {
     paper_bgcolor: 'rgba(0,0,0,0)',
     plot_bgcolor: 'rgba(0,0,0,0)',
     margin: { t: 0, b: 0, l: 0, r: 0 },
@@ -74,7 +73,7 @@ export default function VisualContainer({ type }: VisualContainerProps) {
   }
 
   // Network Graph Config
-  const networkLayout: Partial<Layout> = {
+  const networkLayout: any = {
     ...orbitLayout,
     scene: undefined, // 2D 
     xaxis: { showgrid: false, zeroline: false, showticklabels: false },
