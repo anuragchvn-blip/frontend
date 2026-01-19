@@ -1,3 +1,4 @@
+/* DEPRECATED: This page has been removed from navigation
 "use client"
 
 import Navbar from "@/components/Navbar"
@@ -18,7 +19,7 @@ export default function SettingsPage() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-             {/* Navigation Sidebar */}
+             {/* Navigation Sidebar *!/}
              <div className="col-span-1">
                 <nav className="flex flex-col space-y-1">
                     {["General", "Coverage Areas", "Data Sources", "Alert Thresholds", "API Access", "System Logs"].map((item, i) => (
@@ -36,10 +37,10 @@ export default function SettingsPage() {
                 </nav>
              </div>
 
-             {/* Main Content */}
+             {/* Main Content *!/}
              <div className="col-span-1 md:col-span-3 space-y-8">
                 
-                {/* Section: Operational Mode */}
+                {/* Section: Operational Mode *!/}
                 <section className="bg-white/[0.02] border border-white/10 p-8 hud-corner relative">
                      <span className="hidden"/>
                      <div className="flex items-start justify-between mb-6">
@@ -69,7 +70,7 @@ export default function SettingsPage() {
                      </div>
                 </section>
 
-                {/* Section: Data Ingestion */}
+                {/* Section: Data Ingestion *!/}
                 <section className="bg-white/[0.02] border border-white/10 p-8 hud-corner relative">
                      <span className="hidden"/>
                      <div className="flex items-start justify-between mb-6">
@@ -113,4 +114,9 @@ export default function SettingsPage() {
       </div>
     </main>
   )
+}
+*/
+
+export default function SettingsPage() {
+  return null
 }

@@ -1,3 +1,4 @@
+/* DEPRECATED: This page has been removed from navigation
 "use client"
 
 import Navbar from "@/components/Navbar"
@@ -18,7 +19,7 @@ export default function SecurityPage() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {/* High Level Metrics */}
+            {/* High Level Metrics *!/}
             <div className="p-8 border border-white/10 bg-white/[0.02] hud-corner relative">
                  <span className="hidden"/>
                  <div className="flex items-center justify-between mb-8">
@@ -50,9 +51,9 @@ export default function SecurityPage() {
             </div>
         </div>
 
-        {/* Main Intelligence View */}
+        {/* Main Intelligence View *!/}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-[600px]">
-             {/* Left Column: Priority Targets */}
+             {/* Left Column: Priority Targets *!/}
              <div className="col-span-1 border border-white/10 bg-black/40 flex flex-col">
                 <div className="p-6 border-b border-white/10 flex justify-between items-center bg-white/[0.02]">
                     <h3 className="text-sm font-bold uppercase tracking-widest">Priority Targets</h3>
@@ -80,7 +81,7 @@ export default function SecurityPage() {
                 </div>
              </div>
 
-             {/* Center/Right: Data Visualization Placeholder */}
+             {/* Center/Right: Data Visualization Placeholder *!/}
              <div className="col-span-1 lg:col-span-2 border border-white/10 bg-black/40 relative flex items-center justify-center p-12">
                   <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
                   <div className="text-center">
@@ -95,4 +96,9 @@ export default function SecurityPage() {
       </div>
     </main>
   )
+}
+*/
+
+export default function SecurityPage() {
+  return null
 }

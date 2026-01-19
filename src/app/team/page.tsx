@@ -144,32 +144,32 @@ export default function TeamPage() {
             <Navbar />
 
             {/* Hero Section with Group Photo */}
-            <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-4">
-                <div className="max-w-6xl mx-auto">
+            <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4">
+                <div className="max-w-4xl mx-auto">
                     {/* Section Label */}
                     <motion.span
-                        className="text-technical mb-6 block"
+                        className="text-technical mb-4 md:mb-6 block"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        The Core Team
+                        THE CORE TEAM
                     </motion.span>
 
-                    {/* Heading */}
+                    {/* Heading - Large and aligned */}
                     <motion.h1
-                        className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tighter text-white mb-6 leading-[0.95]"
+                        className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white mb-6 md:mb-8 leading-[1.05]"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.1 }}
                     >
-                        Building the future of <br />
+                        Building the future of <br className="hidden md:block" />
                         <span className="text-cosmic-blue">orbital intelligence</span>
                     </motion.h1>
 
-                    {/* Subheading */}
+                    {/* Subheading - aligned with heading */}
                     <motion.p
-                        className="text-stellar-grey max-w-lg text-sm md:text-base leading-relaxed mb-10"
+                        className="text-stellar-grey max-w-2xl text-base md:text-lg leading-relaxed mb-12 md:mb-16"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -177,52 +177,53 @@ export default function TeamPage() {
                         A dedicated team of engineers, scientists, and visionaries committed to revolutionizing space situational awareness.
                     </motion.p>
 
-                    {/* Group Photo */}
+                    {/* Group Photo - same max-width as text container */}
                     <motion.div
-                        className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-lg border border-white/10"
+                        className="relative w-full overflow-hidden rounded-lg border border-white/10 shadow-2xl"
                         initial={{ opacity: 0, y: 40, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <Image
-                            src="/team/group.png"
-                            alt="SSA Ops Team"
-                            width={1920}
-                            height={1080}
-                            className="w-full h-auto"
-                            priority
-                        />
+                        <div className="relative aspect-[16/10] md:aspect-[16/9]">
+                            <Image
+                                src="/team/group.png?v=2024"
+                                alt="SSA Ops Team"
+                                fill
+                                className="object-cover object-center"
+                                priority
+                            />
+                        </div>
                         {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-space-black/50 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-space-black/40 via-transparent to-transparent pointer-events-none" />
 
                         {/* HUD corners */}
-                        <div className="absolute top-4 left-4 text-white/40 font-mono text-xs">+</div>
-                        <div className="absolute top-4 right-4 text-white/40 font-mono text-xs">+</div>
-                        <div className="absolute bottom-4 left-4 text-white/40 font-mono text-xs">+</div>
-                        <div className="absolute bottom-4 right-4 text-white/40 font-mono text-xs">+</div>
+                        <div className="absolute top-3 left-3 text-white/30 font-mono text-xs">+</div>
+                        <div className="absolute top-3 right-3 text-white/30 font-mono text-xs">+</div>
+                        <div className="absolute bottom-3 left-3 text-white/30 font-mono text-xs">+</div>
+                        <div className="absolute bottom-3 right-3 text-white/30 font-mono text-xs">+</div>
                     </motion.div>
                 </div>
             </section>
 
             {/* Team Members Grid */}
-            <section className="py-20 md:py-32 px-4">
+            <section className="py-16 md:py-28 px-4">
                 <div className="max-w-6xl mx-auto">
                     {/* Section Label */}
                     <motion.div
-                        className="mb-16"
+                        className="mb-12 md:mb-16 text-center md:text-left"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <span className="text-technical mb-4 block">Personnel</span>
-                        <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white">
+                        <span className="text-technical mb-3 md:mb-4 block">PERSONNEL</span>
+                        <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-white">
                             Meet the team
                         </h2>
                     </motion.div>
 
                     {/* Team Cards Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
                         {teamMembers.map((member, index) => (
                             <motion.div
                                 key={member.name}
@@ -243,10 +244,10 @@ export default function TeamPage() {
             </section>
 
             {/* Bottom CTA Section */}
-            <section className="py-20 md:py-32 px-4 border-t border-white/5">
+            <section className="py-16 md:py-32 px-4 border-t border-white/5">
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.h2
-                        className="text-3xl md:text-5xl font-medium tracking-tighter mb-6"
+                        className="text-2xl md:text-5xl font-medium tracking-tighter mb-4 md:mb-6"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -255,7 +256,7 @@ export default function TeamPage() {
                         Want to join our mission?
                     </motion.h2>
                     <motion.p
-                        className="text-stellar-grey text-base md:text-lg mb-10 max-w-lg mx-auto"
+                        className="text-stellar-grey text-sm md:text-lg mb-8 md:mb-10 max-w-lg mx-auto px-4"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -265,7 +266,7 @@ export default function TeamPage() {
                     </motion.p>
                     <motion.a
                         href="mailto:anuragchvn1@gmail.com"
-                        className="btn-pill btn-primary inline-flex items-center px-8 py-4 text-base"
+                        className="btn-pill btn-primary inline-flex items-center px-6 md:px-8 py-3 md:py-4 text-sm md:text-base"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}

@@ -13,8 +13,9 @@ export default function Navbar() {
   const navItems = [
     { name: "Dashboard", href: "/dashboard" },
     { name: "Catalog", href: "/catalog" },
-    { name: "Intelligence", href: "/security" },
-    { name: "Systems", href: "/settings" },
+    { name: "Tools", href: "/tools" },
+    // { name: "Intelligence", href: "/security" },
+    // { name: "Systems", href: "/settings" },
     { name: "Team", href: "/team" },
   ]
 
