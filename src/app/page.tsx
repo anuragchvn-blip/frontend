@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Satellite, Shield, Zap, Target, Globe, ChevronRight, Activity, ArrowRight } from "lucide-react"
+import { Satellite, Shield, Zap, Target, Globe, ChevronRight, Activity, ArrowRight, FileText, Eye, Cpu, Lock, ExternalLink } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import Navbar from "@/components/Navbar"
 // import StarField from "@/components/StarField"
 import HeroVideo from "@/components/HeroVideo"
@@ -71,6 +72,7 @@ export default function LandingPage() {
         {/* HUD Decoration Removed as requested */}
 
       </section>
+      
 
       {/* Core Capabilities - Technical Style */}
       <section className="py-32 px-4 max-w-7xl mx-auto">
@@ -111,6 +113,152 @@ export default function LandingPage() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* About Section - Relocated & Resized */}
+      <section id="about" className="py-32 bg-black relative border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 md:px-12">
+          <div className="grid lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-12 mb-12">
+              <span className="text-technical mb-6 block">Organization</span>
+              <h2 className="text-6xl md:text-8xl lg:text-9xl font-sans font-medium text-white mb-8 tracking-tighter leading-[0.85]">
+                About SSA Systems
+              </h2>
+            </div>
+            <div className="lg:col-span-12">
+              <div className="space-y-16">
+                <p className="text-stellar-grey text-xl md:text-3xl leading-tight font-sans font-light border-l-4 border-white/20 pl-10 max-w-5xl">
+                  SSA Systems is an institutional-grade platform dedicated to comprehensive Space Situational Awareness. 
+                  We provide high-precision tracking, collision avoidance, and strategic monitoring services to sovereign 
+                  and commercial space operators globally.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-16 border-t border-white/10">
+                  {[
+                    { title: "Orbital Safety", desc: "Automated conjunction assessment and path prediction using multi-source sensor fusion." },
+                    { title: "Defense Assets", desc: "Specialized monitoring and threat assessment for high-value governmental infrastructure." },
+                    { title: "Technical R&D", desc: "In-house development of multi-spectral image processing and autonomous vision tools." },
+                    { title: "Precision State", desc: "Centimeter-level accuracy in state-vector estimation and orbital propagation." }
+                  ].map((item, idx) => (
+                    <div key={idx} className="group space-y-4">
+                      <h4 className="text-sm font-mono font-bold text-white uppercase tracking-[0.3em]">{item.title}</h4>
+                      <p className="text-base text-stellar-grey leading-relaxed font-light">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Findings - Tsuki Image Processing Showcase */}
+      <section className="py-32 bg-zinc-950 relative overflow-hidden">
+        {/* Decorative Grid */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
+        
+        <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
+          <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <span className="text-technical mb-4 block">Operational Excellence</span>
+              <h2 className="text-4xl md:text-5xl font-medium text-white uppercase tracking-tight">
+                Recent Findings
+              </h2>
+              <p className="mt-6 text-stellar-grey text-sm md:text-base leading-relaxed">
+                Experience the precision of our proprietary <span className="text-white font-semibold">Tsuki Image Processing Tool</span>. 
+                Below is a demonstration of our automated debris detection and comprehensive data reporting.
+              </p>
+            </div>
+            
+            {/* PDF Report Card */}
+            <motion.a
+                href="/documents/orbital_debris_comprehensive_report.pdf"
+                target="_blank"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="group flex items-center space-x-6 p-6 md:p-10 glass-panel rounded-2xl hover:bg-white/[0.08] transition-all hover:border-white/20 shrink-0 relative hud-corner"
+            >
+                <span className="hidden" /> {/* HUD Corner Anchor */}
+                <div className="w-16 h-16 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition-colors">
+                    <FileText className="w-8 h-8 text-red-500" />
+                </div>
+                <div>
+                    <h3 className="text-white font-medium mb-1 flex items-center uppercase tracking-wider">
+                        NASA Comprehensive Report
+                        <ExternalLink className="w-3 h-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </h3>
+                    <p className="text-technical">PDF • 8.84 MB • RELEASE V2.4</p>
+                </div>
+            </motion.a>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Detection Showcase 1 */}
+            <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                    <h3 className="text-technical">LEO Orbit Detection</h3>
+                    <span className="text-[9px] font-mono bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-full border border-emerald-500/20 uppercase tracking-[0.2em]">TSUKI PROCESSED</span>
+                </div>
+                <div className="grid grid-cols-2 gap-6 aspect-video">
+                    <div className="relative group hud-corner overflow-hidden rounded-lg">
+                        <span className="hidden" />
+                        <img 
+                            src="/images/detection/leo_raw.jpg" 
+                            alt="Raw LEO Input" 
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-opacity">
+                            <span className="text-technical text-white">RAW INPUT DATA</span>
+                        </div>
+                    </div>
+                    <div className="relative group border border-cosmic-blue/30 rounded-lg overflow-hidden hud-corner">
+                        <span className="hidden" />
+                        <img 
+                            src="/images/detection/leo_processed.jpg" 
+                            alt="Tsuki Processed LEO" 
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute bottom-0 inset-x-0 p-4 bg-cosmic-blue/80 backdrop-blur-md border-t border-white/10">
+                             <p className="text-[10px] font-mono text-white text-center tracking-[0.25em] font-bold">DETECTED 142 DEBRIS OBJECTS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Detection Showcase 2 */}
+            <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                    <h3 className="text-technical">GEO Orbit Detection</h3>
+                    <span className="text-[9px] font-mono bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-full border border-emerald-500/20 uppercase tracking-[0.2em]">TSUKI PROCESSED</span>
+                </div>
+                <div className="grid grid-cols-2 gap-6 aspect-video">
+                    <div className="relative group hud-corner overflow-hidden rounded-lg">
+                        <span className="hidden" />
+                        <img 
+                            src="/images/detection/geo_raw.jpg" 
+                            alt="Raw GEO Input" 
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-opacity">
+                            <span className="text-technical text-white">RAW INPUT DATA</span>
+                        </div>
+                    </div>
+                    <div className="relative group border border-cosmic-blue/30 rounded-lg overflow-hidden hud-corner">
+                        <span className="hidden" />
+                        <img 
+                            src="/images/detection/geo_processed.jpg" 
+                            alt="Tsuki Processed GEO" 
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute bottom-0 inset-x-0 p-4 bg-cosmic-blue/80 backdrop-blur-md border-t border-white/10">
+                             <p className="text-[10px] font-mono text-white text-center tracking-[0.25em] font-bold">DETECTED 89 DEBRIS OBJECTS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
         </div>
       </section>
 
