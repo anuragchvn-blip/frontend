@@ -1,12 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Satellite, Shield, Zap, Target, Globe, ChevronRight, Activity, ArrowRight, FileText, Eye, Cpu, Lock, ExternalLink } from "lucide-react"
+import { Satellite, Shield, Zap, Target, Globe, ChevronRight, Activity, ArrowRight, FileText, Eye, Cpu, Lock, ExternalLink, Play, Pause } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import Navbar from "@/components/Navbar"
 // import StarField from "@/components/StarField"
 import HeroVideo from "@/components/HeroVideo"
+
+import { useState, useRef } from "react"
 
 export default function LandingPage() {
   return (
@@ -258,6 +260,98 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials - Operational Feedback */}
+      <section className="py-32 bg-black relative border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
+          <div className="mb-20">
+            <span className="text-technical mb-4 block">Operational Verification</span>
+            <h2 className="text-5xl md:text-7xl font-sans font-medium text-white tracking-tighter uppercase">
+              Mission <span className="text-cosmic-blue font-serif italic lowercase font-light">Feedback</span>
+            </h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-stretch">
+            {/* Video Testimonial Card */}
+            <motion.div 
+               initial={{ opacity: 0, x: -20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="group relative glass-panel rounded-3xl overflow-hidden hud-corner h-full min-h-[400px]"
+            >
+              <span className="hidden" />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 pointer-events-none" />
+              
+              <video 
+                className="w-full h-full object-cover filter brightness-[1.1] contrast-[1.05] saturate-[1.1] shadow-2xl"
+                src="/testimonials/d2fc4c04-bf13-4bc1-837f-2a81b712588f.mp4"
+                poster="/testimonials/ChatGPT Image Jan 21, 2026, 12_58_02 AM.png"
+                loop
+                muted={false}
+                playsInline
+                controls
+              />
+              
+              <div className="absolute bottom-6 left-6 z-20 pointer-events-none">
+                <p className="text-technical text-white mb-2 text-[10px]">Reference: VID-OP-001</p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-white/80">Active Operational Log</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* PDF Testimonial Card */}
+            <motion.div 
+               initial={{ opacity: 0, x: 20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="flex flex-col space-y-8"
+            >
+              <div className="flex-1 flex flex-col justify-between p-10 glass-panel border border-white/10 rounded-3xl relative hud-corner">
+                <span className="hidden" />
+                <div className="space-y-6">
+                  <div className="w-16 h-16 rounded-xl bg-cosmic-blue/10 flex items-center justify-center">
+                    <FileText className="w-8 h-8 text-cosmic-blue" />
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-sans font-medium text-white tracking-tight leading-tight uppercase">
+                    Platform <br />
+                    Technical <br />
+                    Testimonial
+                  </h3>
+                  <p className="text-stellar-grey text-lg leading-relaxed font-light">
+                    Institutional validation report detailing the performance metrics and cross-correlation accuracy of the SSA Ops infrastructure.
+                  </p>
+                </div>
+
+                <div className="pt-10">
+                  <a 
+                    href="/testimonials/Testimonial for SSA Ops Platform.pdf"
+                    target="_blank"
+                    className="inline-flex items-center space-x-4 group/btn"
+                  >
+                    <div className="btn-pill bg-white text-black flex items-center group-hover/btn:shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all">
+                      Review Documentation
+                      <ExternalLink className="ml-3 w-4 h-4" />
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              {/* Security Badge HUD Style */}
+              <div className="p-6 border border-white/5 rounded-2xl bg-white/[0.02]">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <Lock className="w-4 h-4 text-white/40" />
+                    <span className="text-[10px] font-mono font-bold tracking-[0.3em] text-white/40 uppercase">Classified Institutional Record</span>
+                  </div>
+                  <div className="text-[10px] font-mono text-white/20">Ref: TEST-2026-SSA</div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
