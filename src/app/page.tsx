@@ -12,14 +12,14 @@ import { useState, useRef } from "react"
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen relative bg-space-black text-white selection:bg-white selection:text-space-black scroll-smooth">
+    <main className="min-h-screen relative bg-space-black text-white selection:bg-white selection:text-space-black scroll-smooth overflow-hidden">
       {/* <StarField /> */} 
       <div className="atmospheric-bg" />
       <Navbar />
 
       {/* Hero Section */}
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-end pb-0 overflow-hidden">
+      <section className="relative min-h-[100dvh] flex flex-col justify-end pb-0 overflow-hidden bg-space-black">
         <HeroVideo />
         
         {/* Unified Content Container - Flex Stacking for Layout Stability */}
@@ -77,7 +77,8 @@ export default function LandingPage() {
       
 
       {/* Core Capabilities - Technical Style */}
-      <section className="py-32 px-4 max-w-7xl mx-auto">
+      <section className="py-32 px-4 bg-space-black relative overflow-hidden mt-[-1px]">
+        <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <span className="text-technical mb-4 block">Platform Core</span>
           <h2 className="text-4xl md:text-5xl font-medium text-white uppercase tracking-tight">
@@ -85,7 +86,7 @@ export default function LandingPage() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-0 border border-white/10">
+        <div className="grid md:grid-cols-3 gap-0">
           {[
             {
               title: "Orbital Mapping",
@@ -116,10 +117,11 @@ export default function LandingPage() {
             </div>
           ))}
         </div>
+        </div>
       </section>
 
       {/* About Section - Relocated & Resized */}
-      <section id="about" className="py-32 bg-black relative border-y border-white/10">
+      <section id="about" className="py-32 bg-space-black relative mt-[-1px]">
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           <div className="grid lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-12 mb-12">
@@ -156,7 +158,7 @@ export default function LandingPage() {
       </section>
 
       {/* Recent Findings - Tsuki Image Processing Showcase */}
-      <section className="py-32 bg-zinc-950 relative overflow-hidden">
+      <section className="py-32 bg-space-black relative overflow-hidden mt-[-1px]">
         {/* Decorative Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
         
@@ -265,7 +267,7 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials - Operational Feedback */}
-      <section className="py-32 bg-black relative border-y border-white/5">
+      <section className="py-32 bg-space-black relative mt-[-1px]">
         <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
           <div className="mb-20">
             <span className="text-technical mb-4 block">Operational Verification</span>
@@ -323,7 +325,7 @@ export default function LandingPage() {
                     Testimonial
                   </h3>
                   <p className="text-stellar-grey text-lg leading-relaxed font-light">
-                    Institutional validation report detailing the performance metrics and cross-correlation accuracy of the SSA Ops infrastructure.
+                    Institutional validation report detailing the performance metrics and cross-correlation accuracy of the Cryptik infrastructure.
                   </p>
                 </div>
 
@@ -357,7 +359,7 @@ export default function LandingPage() {
       </section>
 
       {/* Stats - Cinematic Style - Properly Middle Aligned */}
-      <section className="py-40 bg-white/[0.02] border-y border-white/5 relative overflow-hidden">
+      <section className="py-40 bg-white/[0.02] relative overflow-hidden mt-[-1px]">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
             {[
@@ -379,7 +381,7 @@ export default function LandingPage() {
       {/* Old Footer Removed */}
       {/* Footer - Invest In Us */ }
       {/* Footer - Invest In Us */ }
-      <footer className="relative pt-32 pb-10 px-4 border-t border-white/10 bg-black text-white overflow-hidden">
+      <footer className="relative pt-32 pb-10 px-4 bg-space-black text-white overflow-hidden mt-[-1px]">
         {/* Ambient Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-blue-900/10 blur-[150px] pointer-events-none" />
         
@@ -411,7 +413,7 @@ export default function LandingPage() {
                 <div className="w-5 h-5 rounded-full border border-white/30 flex items-center justify-center">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
                 </div>
-                <span className="font-mono font-bold tracking-widest text-sm text-white/80">SSA OPS SYSTEM</span>
+                <span className="font-mono font-bold tracking-widest text-sm text-white/80">CRYPTIK</span>
              </div>
 
              {/* Copyright */}
@@ -433,7 +435,7 @@ export default function LandingPage() {
              
              {/* Mobile Copyright (Visible only on mobile) */}
              <div className="md:hidden text-zinc-600 text-[10px] font-mono tracking-widest uppercase text-center mt-4">
-               © 2026 SSA OPS SYSTEM.
+               © 2026 CRYPTIK.
              </div>
 
           </div>

@@ -21,6 +21,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Professional Satellite Tracking System | Real-time SSA Operations",
   description: "Advanced space situational awareness platform for real-time satellite tracking, orbital mechanics, and conjunction analysis.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

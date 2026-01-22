@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Satellite, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import Image from "next/image"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 
@@ -23,9 +24,16 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 py-6 px-4 sm:px-10 flex justify-between items-center bg-transparent backdrop-blur-sm sm:backdrop-blur-none transition-all duration-300">
       <div className="flex items-center space-x-3">
         <Link href="/" className="flex items-center space-x-2 group">
-          <Satellite className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+          <div className="relative w-8 h-8 group-hover:scale-110 transition-transform">
+            <Image
+              src="/team/ChatGPT Image Jan 22, 2026, 07_12_18 PM.png"
+              alt="Cryptik Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
           <span className="text-sm font-bold tracking-[0.2em] uppercase text-white">
-            SSA <span className="opacity-40">Ops</span>
+            Cryptik
           </span>
         </Link>
       </div>

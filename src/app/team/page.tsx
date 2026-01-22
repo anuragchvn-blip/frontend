@@ -187,7 +187,7 @@ export default function TeamPage() {
                         <div className="relative aspect-[16/10] md:aspect-[16/9]">
                             <Image
                                 src="/team/group.png?v=2024"
-                                alt="SSA Ops Team"
+                                alt="Cryptik Team"
                                 fill
                                 className="object-cover object-center"
                                 priority
