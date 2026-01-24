@@ -175,31 +175,55 @@ export default function LandingPage() {
               </p>
             </div>
             
-            {/* PDF Report Card */}
-            <motion.a
-                href="/documents/orbital_debris_comprehensive_report.pdf"
-                target="_blank"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="group flex items-center space-x-6 p-6 md:p-10 glass-panel rounded-2xl hover:bg-white/[0.08] transition-all hover:border-white/20 shrink-0 relative hud-corner"
-            >
-                <span className="hidden" /> {/* HUD Corner Anchor */}
-                <div className="w-16 h-16 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition-colors">
-                    <FileText className="w-8 h-8 text-red-500" />
-                </div>
-                <div>
-                    <h3 className="text-white font-medium mb-1 flex items-center uppercase tracking-wider">
-                        NASA Comprehensive Report
-                        <ExternalLink className="w-3 h-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </h3>
-                    <p className="text-technical">PDF • 8.84 MB • RELEASE V2.4</p>
-                </div>
-            </motion.a>
+            {/* Report Cards */}
+            <div className="flex flex-col md:flex-row gap-6">
+                <motion.a
+                    href="/documents/orbital_debris_comprehensive_report.pdf"
+                    target="_blank"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="group flex items-center space-x-6 p-6 md:p-10 glass-panel rounded-2xl hover:bg-white/[0.08] transition-all hover:border-white/20 shrink-0 relative hud-corner"
+                >
+                    <span className="hidden" /> {/* HUD Corner Anchor */}
+                    <div className="w-16 h-16 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition-colors">
+                        <FileText className="w-8 h-8 text-red-500" />
+                    </div>
+                    <div>
+                        <h3 className="text-white font-medium mb-1 flex items-center uppercase tracking-wider">
+                            NASA Comprehensive Report
+                            <ExternalLink className="w-3 h-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </h3>
+                        <p className="text-technical">PDF • 8.84 MB • RELEASE V2.4</p>
+                    </div>
+                </motion.a>
+
+                <motion.a
+                    href="/documents/drone_detection_report.pdf"
+                    target="_blank"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="group flex items-center space-x-6 p-6 md:p-10 glass-panel rounded-2xl hover:bg-white/[0.08] transition-all hover:border-white/20 shrink-0 relative hud-corner"
+                >
+                    <span className="hidden" /> {/* HUD Corner Anchor */}
+                    <div className="w-16 h-16 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                        <FileText className="w-8 h-8 text-blue-500" />
+                    </div>
+                    <div>
+                        <h3 className="text-white font-medium mb-1 flex items-center uppercase tracking-wider">
+                            BLUE Drone Detection
+                            <ExternalLink className="w-3 h-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </h3>
+                        <p className="text-technical">PDF • 4.34 MB • CLASSIFIED</p>
+                    </div>
+                </motion.a>
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Detection Showcase 1 */}
+          <div className="grid lg:grid-cols-2 gap-16 mb-20">
+            {/* Detection Showcase 1 - LEO */}
             <div className="space-y-6">
                 <div className="flex items-center justify-between">
                     <h3 className="text-technical">LEO Orbit Detection</h3>
@@ -231,7 +255,7 @@ export default function LandingPage() {
                 </div>
             </div>
 
-            {/* Detection Showcase 2 */}
+            {/* Detection Showcase 2 - GEO */}
             <div className="space-y-6">
                 <div className="flex items-center justify-between">
                     <h3 className="text-technical">GEO Orbit Detection</h3>
@@ -258,6 +282,51 @@ export default function LandingPage() {
                         />
                         <div className="absolute bottom-0 inset-x-0 p-4 bg-cosmic-blue/80 backdrop-blur-md border-t border-white/10">
                              <p className="text-[10px] font-mono text-white text-center tracking-[0.25em] font-bold">DETECTED 89 DEBRIS OBJECTS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          {/* New Section: Aerial Surveillance */}
+          <div className="border-t border-white/10 pt-16">
+            <div className="mb-12 max-w-3xl">
+               <span className="text-technical mb-2 block text-blue-400">Expanded Capabilities</span>
+               <h3 className="text-3xl font-medium text-white uppercase tracking-tight mb-6">Aerial Surveillance</h3>
+               <p className="text-stellar-grey text-base leading-relaxed">
+                 <strong className="text-white">System:</strong> Custom YOLOv8 Neural Network. <br />
+                 <strong className="text-white">Methodology:</strong> Multi-factor heuristic evaluation (Size, Shape, Altitude) with 122m operational ceiling. <br />
+                 <strong className="text-white">Result:</strong> Positive identification of <strong>LARGE</strong> class drone (ITU Standard) with <strong>0.80 confidence</strong>.
+               </p>
+            </div>
+            
+            {/* Detection Showcase 3 - BLUE Drone */}
+            <div className="max-w-5xl">
+                <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-technical">Drone Threat Detection</h3>
+                    <span className="text-[9px] font-mono bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full border border-blue-500/20 uppercase tracking-[0.2em]">BLUE PROCESSED</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="relative group hud-corner overflow-hidden rounded-lg">
+                        <span className="hidden" />
+                        <img 
+                            src="/images/detection/drone_raw.png" 
+                            alt="Raw Drone Input" 
+                            className="w-full h-auto"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-opacity">
+                            <span className="text-technical text-white">RAW INPUT DATA</span>
+                        </div>
+                    </div>
+                    <div className="relative group border border-blue-500/30 rounded-lg overflow-hidden hud-corner">
+                        <span className="hidden" />
+                        <img 
+                            src="/images/detection/drone_processed.png" 
+                            alt="BLUE Processed Drone" 
+                            className="w-full h-auto"
+                        />
+                        <div className="absolute bottom-0 inset-x-0 p-4 bg-blue-600/80 backdrop-blur-md border-t border-white/10">
+                             <p className="text-[10px] font-mono text-white text-center tracking-[0.25em] font-bold">DETECTED 1 AERIAL THREAT</p>
                         </div>
                     </div>
                 </div>
