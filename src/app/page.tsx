@@ -11,8 +11,41 @@ import HeroVideo from "@/components/HeroVideo"
 import { useState, useRef } from "react"
 
 export default function LandingPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Cryptik SSA Systems",
+        "url": "https://www.cryptik.space",
+        "logo": "https://www.cryptik.space/logo.png",
+        "description": "Institutional-grade Space Situational Awareness (SSA) platform.",
+        "sameAs": [
+          "https://x.com/cryptik_ssa",
+          "https://github.com/anuragchvn-blip"
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Cryptik SSA Platform",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Real-time satellite tracking and orbital debris detection system.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    ]
+  };
+
   return (
     <main className="min-h-screen relative bg-space-black text-white selection:bg-white selection:text-space-black scroll-smooth overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* <StarField /> */} 
       <div className="atmospheric-bg" />
       <Navbar />
@@ -33,7 +66,7 @@ export default function LandingPage() {
             className="text-left pointer-events-auto max-w-3xl"
           >
               <h3 className="text-white/70 text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-4 font-mono">
-                Operational Challenge
+                Institutional-Grade Space Situational Awareness Platform
               </h3>
               
               <h1 className="text-6xl xs:text-7xl md:text-9xl font-sans font-medium text-white mb-6 md:mb-8 tracking-tighter leading-[0.85]">
@@ -42,7 +75,7 @@ export default function LandingPage() {
 
               <div className="space-y-4 md:space-y-6 text-white/95 font-sans font-normal leading-relaxed text-sm md:text-lg border-l-2 border-white/20 pl-4 md:pl-6 max-w-xl">
                 <p>
-                  <span className="text-white font-bold">Why it matters:</span> Low Earth Orbit density has increased by 400% in the last decade. Critical assets face exponential collision risks.
+                  <span className="text-white font-bold">Why it matters:</span> Low Earth Orbit density has increased by 400% in the last decade. Our enterprise satellite tracking system mitigates exponential collision risks for critical assets.
                 </p>
               </div>
           </motion.div>
