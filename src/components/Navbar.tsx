@@ -18,6 +18,7 @@ export default function Navbar() {
     // { name: "Intelligence", href: "/security" },
     // { name: "Systems", href: "/settings" },
     { name: "Team", href: "/team" },
+    { name: "Whitepaper", href: "/resources/whitepaper" },
   ]
 
   return (
