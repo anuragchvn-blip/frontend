@@ -12,15 +12,15 @@ export default function WhitepaperPage() {
       <div className="atmospheric-bg" />
       <Navbar />
       
-      <div className="max-w-4xl mx-auto px-4 pt-32 pb-20 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-20 relative z-10">
         <div className="mb-12 border-b border-white/10 pb-12">
-          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium tracking-tighter mb-4 sm:mb-6">
             Cryptik Technical Whitepaper
           </h1>
-          <p className="text-xl md:text-2xl text-stellar-grey font-light tracking-tight">
+          <p className="text-lg sm:text-xl md:text-2xl text-stellar-grey font-light tracking-tight">
             A Multi-Domain Tracking and Prediction Architecture
           </p>
-          <div className="mt-8 flex items-center space-x-4 text-sm text-gray-400 uppercase tracking-widest">
+          <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 uppercase tracking-widest">
             <span>Cryptik Engineering Team</span>
             <span>•</span>
             <span>January 2026</span>
@@ -28,7 +28,7 @@ export default function WhitepaperPage() {
         </div>
 
         <article className="prose prose-invert prose-lg max-w-none">
-          <div className="p-8 border border-white/10 rounded-2xl bg-white/[0.02] mb-12">
+          <div className="p-6 sm:p-8 border border-white/10 rounded-2xl bg-white/[0.02] mb-8 sm:mb-12">
             <h3 className="text-sm font-bold uppercase tracking-widest text-stellar-grey mb-4">Abstract</h3>
             <p className="text-gray-300 leading-relaxed">
               This document presents the technical implementation of Cryptik, a production-ready tracking and prediction platform addressing three distinct but interconnected domains: orbital conjunction analysis, ballistic missile trajectory prediction, and autonomous unmanned aerial vehicle (UAV) detection. The system combines analytical propagation methods (SGP4), advanced estimation algorithms (Extended Kalman Filtering, Interacting Multiple Model), Physics-Informed Neural Networks derived from VarNet variational methods, and computer vision models (YOLOv8) to deliver sub-second response times for threat assessment queries. Built on FastAPI with PostgreSQL persistence and Next.js visualization, Cryptik processes TLE data from Space-Track.org, historical missile launch records from Nuclear Threat Initiative and Center for Strategic & International Studies databases, and real-time video feeds for drone classification. The architecture supports offline operation through local LLM inference (llama.cpp) and achieves 10x acceleration in orbital propagation through physics-constrained neural network training.
@@ -36,10 +36,10 @@ export default function WhitepaperPage() {
           </div>
 
           <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">1. Introduction</h2>
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">1. Introduction</h2>
             
             <div className="mb-8">
-              <h3 className="text-xl font-medium mb-4 text-white">1.1 Problem Statement</h3>
+              <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-white">1.1 Problem Statement</h3>
               <p className="text-stellar-grey mb-4">
                 The number of cataloged objects in Low Earth Orbit has exceeded 25,000 as of 2024, with functional satellites numbering approximately 8,000. Collision avoidance requires computing pairwise conjunction probabilities, an <em>O(n²)</em> operation that becomes computationally prohibitive as <em>n</em> increases. Simultaneously, ballistic missile test activity from state actors (North Korea: 677 recorded tests since 1984, Iran: 1000+ launches since 1991) demands real-time trajectory forecasting. Ground-level airspace monitoring faces the challenge of distinguishing small UAVs (cross-sections as low as 0.01 m²) from birds and atmospheric phenomena.
               </p>
@@ -59,8 +59,8 @@ export default function WhitepaperPage() {
             </div>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">2. System Architecture</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">2. System Architecture</h2>
             
             <div className="mb-8">
               <h3 className="text-xl font-medium mb-4 text-white">2.1 Technology Stack</h3>
@@ -86,15 +86,15 @@ export default function WhitepaperPage() {
             </div>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">3. Orbital Mechanics Implementation</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">3. Orbital Mechanics Implementation</h2>
 
             <div className="mb-8">
               <h3 className="text-xl font-medium mb-4 text-white">3.1 SGP4 Propagation</h3>
               <p className="text-stellar-grey mb-4">
                 The baseline propagator implements the 2006 revision of Simplified General Perturbations-4. State vector computation follows:
               </p>
-              <div className="my-6 p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-sm text-center text-blue-300">
+              <div className="my-4 sm:my-6 p-3 sm:p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-xs sm:text-sm text-center text-blue-300 overflow-x-auto">
                 r(t) = r₀ + ∫[t₀ to t] v(τ) dτ
               </div>
               <p className="text-stellar-grey">
@@ -108,7 +108,7 @@ export default function WhitepaperPage() {
                 Pairwise screening applies a two-phase filter. Phase 1 computes minimum orbit intersection distance (MOID) using polynomial root-finding. Pairs with MOID &lt; 5 km advance to Phase 2: numerical integration over a 7-day window. Position covariance matrices <em>P₁(t)</em> and <em>P₂(t)</em> inflate based on TLE age (1 km² per day for LEO objects).
               </p>
               <p className="text-stellar-grey mb-4">Probability of collision uses the Chan formula:</p>
-              <div className="my-6 p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-sm text-center text-blue-300">
+              <div className="my-4 sm:my-6 p-3 sm:p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-xs sm:text-sm text-center text-blue-300 overflow-x-auto">
                 Pc = (1 / 2πσxσy) ∫[A_comb] exp(-1/2 * (x²/σx² + y²/σy²)) dA
               </div>
               <p className="text-stellar-grey">
@@ -117,8 +117,8 @@ export default function WhitepaperPage() {
             </div>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">4. ASTRA-SSA: Accelerated Propagation via PINNs</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">4. ASTRA-SSA: Accelerated Propagation via PINNs</h2>
 
             <div className="mb-8">
               <h3 className="text-xl font-medium mb-4 text-white">4.1 VarNet Implementation</h3>
@@ -126,7 +126,7 @@ export default function WhitepaperPage() {
                 The Physics-Informed Neural Network adapts the VarNet framework (Khodayi-mehr & Zavlanos, 2019). The network approximates the state transition function <em>x(t) = N_θ(x₀, t)</em>, where <em>N_θ</em> is a fully connected neural network with 5 hidden layers (64, 128, 128, 64, 32 neurons) and ReLU activations. Input features are <em>x₀ = [r_x, r_y, r_z, v_x, v_y, v_z]</em> in ECI coordinates plus time offset <em>Δt</em>.
               </p>
               <p className="text-stellar-grey mb-4">The loss function enforces dynamics:</p>
-              <div className="my-6 p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-sm text-center text-blue-300">
+              <div className="my-4 sm:my-6 p-3 sm:p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-xs sm:text-sm text-center text-blue-300 overflow-x-auto">
                 L = L_data + λ_phys * L_physics + λ_cons * L_conservation
               </div>
               <ul className="list-disc pl-6 space-y-4 text-stellar-grey marker:text-gray-500">
@@ -159,13 +159,13 @@ export default function WhitepaperPage() {
             </div>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">5. Ballistic Missile Tracking System</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">5. Ballistic Missile Tracking System</h2>
 
             <div className="mb-8">
               <h3 className="text-xl font-medium mb-4 text-white">5.1 6-DOF Equations of Motion</h3>
               <p className="text-stellar-grey mb-4">The trajectory model integrates translational and rotational dynamics:</p>
-              <div className="my-6 p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-sm space-y-2 text-center text-blue-300">
+              <div className="my-4 sm:my-6 p-3 sm:p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-xs sm:text-sm space-y-2 text-center text-blue-300 overflow-x-auto">
                 <div>m * r̈ = T + D + L + m * g(r)</div>
                 <div>I * ω̇ = M_aero + M_thrust - ω × (I * ω)</div>
               </div>
@@ -179,7 +179,7 @@ export default function WhitepaperPage() {
               <p className="text-stellar-grey mb-4">
                 State vector includes position, velocity, and acceleration. Prediction follows:
               </p>
-              <div className="my-6 p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-sm text-center text-blue-300 space-y-2">
+              <div className="my-4 sm:my-6 p-3 sm:p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-xs sm:text-sm text-center text-blue-300 space-y-2 overflow-x-auto">
                 <div>x_hat_k|k-1 = f(x_hat_k-1|k-1, u_k)</div>
                 <div>P_k|k-1 = F_k * P_k-1|k-1 * F_k^T + Q_k</div>
               </div>
@@ -209,8 +209,8 @@ export default function WhitepaperPage() {
             </div>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">6. BLUE Drone Detection Architecture</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">6. BLUE Drone Detection Architecture</h2>
 
             <div className="mb-8">
               <h3 className="text-xl font-medium mb-4 text-white">6.1 YOLOv8 Configuration</h3>
@@ -232,7 +232,7 @@ export default function WhitepaperPage() {
               <p className="text-stellar-grey mb-4">
                 Classification depends on 4 features: Size, Motion (velocity), Altitude, and Shape (aspect ratio).
               </p>
-              <div className="my-6 p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-sm text-center text-blue-300">
+              <div className="my-4 sm:my-6 p-3 sm:p-4 bg-black/40 border border-white/5 rounded-lg font-mono text-xs sm:text-sm text-center text-blue-300 overflow-x-auto">
                 Score = 0.35*f_size + 0.25*f_motion + 0.20*f_altitude + 0.20*f_shape
               </div>
               <p className="text-stellar-grey">
@@ -241,8 +241,8 @@ export default function WhitepaperPage() {
             </div>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">7. Space Debris Detection</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">7. Space Debris Detection</h2>
             <div className="mb-8">
               <h3 className="text-xl font-medium mb-4 text-white">7.1 Pipeline</h3>
               <p className="text-stellar-grey mb-4">
@@ -254,8 +254,8 @@ export default function WhitepaperPage() {
             </div>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">8. Security Architecture</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">8. Security Architecture</h2>
             <p className="text-stellar-grey mb-4">
               <strong>Encryption:</strong> Data at rest uses PostgreSQL TDE with AES-256-CBC. Data in transit uses TLS 1.3 (TLS_AES_256_GCM_SHA384). Authentication uses RS256 signed JWTs.
             </p>
@@ -264,8 +264,8 @@ export default function WhitepaperPage() {
             </p>
           </section>
 
-          <section className="mb-16">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">9. Performance Benchmarks</h2>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">9. Performance Benchmarks</h2>
             <p className="text-stellar-grey mb-4">Tests on AWS c5.4xlarge (16 vCPU, 32GB RAM):</p>
             <ul className="list-disc pl-6 space-y-2 text-stellar-grey marker:text-gray-500">
               <li>SGP4 propagation (1 day): 1.2 ms</li>
@@ -276,8 +276,8 @@ export default function WhitepaperPage() {
             </ul>
           </section>
 
-          <section className="mb-16 pb-12 border-b border-white/10">
-            <h2 className="text-3xl font-medium tracking-tight mb-8 text-white">10. Conclusion</h2>
+          <section className="mb-12 sm:mb-16 pb-12 border-b border-white/10">
+            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-6 sm:mb-8 text-white">10. Conclusion</h2>
             <p className="text-stellar-grey leading-relaxed">
               Cryptik delivers vertical integration of orbital mechanics, ballistic trajectory prediction, and airspace monitoring through a combination of analytical methods and learned approximations. The architecture prioritizes transparency and operational independence. Performance optimizations, particularly the 10x acceleration from VarNet-based PINNs, address the computational burden of large-scale conjunction screening without sacrificing accuracy. Future development will focus on integrating solar radiation pressure perturbations and hypersonic glide vehicle tracking.
             </p>
@@ -287,7 +287,7 @@ export default function WhitepaperPage() {
             <a 
               href="/whitepaper.tex" 
               download="Cryptik_Whitepaper.tex"
-              className="inline-block px-8 py-3 bg-white text-space-black font-bold uppercase tracking-widest rounded-full hover:bg-gray-200 transition-colors"
+              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-space-black text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full hover:bg-gray-200 transition-colors"
             >
               Download LaTeX Source
             </a>
