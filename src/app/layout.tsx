@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.cryptik.space'),
+  metadataBase: new URL('https://www.cryptik.tech'),
   title: {
     default: "Enterprise Space Situational Awareness Platform | Cryptik SSA Systems",
     template: "%s | Cryptik SSA Systems"
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Enterprise Space Situational Awareness Platform",
     description: "Real-time satellite tracking and orbital debris detection for mission-critical space operations.",
-    url: 'https://www.cryptik.space',
+    url: 'https://www.cryptik.tech',
     siteName: 'Cryptik SSA Systems',
     locale: 'en_US',
     type: 'website',
@@ -72,6 +72,41 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased selection:bg-white selection:text-space-black`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Cryptik SSA Systems",
+              "url": "https://www.cryptik.tech",
+              "logo": "https://www.cryptik.tech/logo.png",
+              "description": "Institutional-grade Space Situational Awareness platform.",
+              "sameAs": [
+                "https://twitter.com/cryptik_ssa"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "founder@cryptik.tech"
+              },
+              "owns": [
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "SSA Conjunction Analysis Engine",
+                  "applicationCategory": "Space Situational Awareness",
+                  "operatingSystem": "Web-based"
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "ASTRA-SSA",
+                  "applicationCategory": "Orbital Mechanics AI",
+                   "operatingSystem": "Web-based"
+                }
+              ]
+            })
+          }}
+        />
         <TrackingProvider>
           {children}
         </TrackingProvider>
