@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: ['/', '/llms.txt'],
       disallow: '/private/',
     },
-    sitemap: 'https://www.cryptik.space/sitemap.xml',
+    sitemap: 'https://www.cryptik.tech/sitemap.xml',
   }
 }

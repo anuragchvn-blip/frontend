@@ -75,36 +75,67 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Cryptik SSA Systems",
-              "url": "https://www.cryptik.tech",
-              "logo": "https://www.cryptik.tech/logo.png",
-              "description": "Institutional-grade Space Situational Awareness platform.",
-              "sameAs": [
-                "https://twitter.com/cryptik_ssa"
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "email": "founder@cryptik.tech"
-              },
-              "owns": [
-                {
-                  "@type": "SoftwareApplication",
-                  "name": "SSA Conjunction Analysis Engine",
-                  "applicationCategory": "Space Situational Awareness",
-                  "operatingSystem": "Web-based"
-                },
-                {
-                  "@type": "SoftwareApplication",
-                  "name": "ASTRA-SSA",
-                  "applicationCategory": "Orbital Mechanics AI",
-                   "operatingSystem": "Web-based"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Cryptik SSA Systems",
+                "url": "https://www.cryptik.tech",
+                "logo": "https://www.cryptik.tech/logo.png",
+                "description": "Institutional-grade Space Situational Awareness platform.",
+                "sameAs": [
+                  "https://twitter.com/cryptik_ssa",
+                  "https://github.com/anuragchvn-blip"
+                ],
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "contactType": "customer service",
+                  "email": "anuragchvn1@gmail.com"
                 }
-              ]
-            })
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Cryptik SSA",
+                "url": "https://www.cryptik.tech",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "https://www.cryptik.tech/catalog?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": "Platform Navigation",
+                "itemListElement": [
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 1,
+                    "name": "Team",
+                    "url": "https://www.cryptik.tech/team"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 2,
+                    "name": "Whitepaper",
+                    "url": "https://www.cryptik.tech/resources/whitepaper"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 3,
+                    "name": "Academic Grants",
+                    "url": "https://www.cryptik.tech/#academic"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 4,
+                    "name": "Tools",
+                    "url": "https://www.cryptik.tech/tools"
+                  }
+                ]
+              }
+            ])
           }}
         />
         <TrackingProvider>

@@ -8,9 +8,11 @@ import Navbar from "@/components/Navbar"
 // import StarField from "@/components/StarField"
 import HeroVideo from "@/components/HeroVideo"
 
-import { useState, useRef } from "react"
+import { useState, useRef, FormEvent } from "react"
 
 export default function LandingPage() {
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -460,6 +462,265 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Stats - Cinematic Style - Properly Middle Aligned Section was here */}
+
+      {/* Cryptik Student API - Academic Offer */}
+      <section id="academic" className="py-24 bg-space-black relative overflow-hidden mt-[-1px] border-t border-white/5">
+        <div className="absolute inset-0 opacity-[0.01] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
+        
+        <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-stretch">
+            
+            {/* Sales Copy Side */}
+            <div className="flex flex-col justify-between h-full py-2">
+              <div className="space-y-10">
+                <div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    className="flex items-center space-x-3 mb-6"
+                  >
+                    <span className="text-technical text-blue-400 font-bold uppercase tracking-[0.3em] text-[10px]">
+                      Verified Academic Partnership
+                    </span>
+                    <span className="h-px w-12 bg-blue-500/20" />
+                  </motion.div>
+                  
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="text-4xl md:text-6xl font-medium text-white tracking-tighter leading-tight uppercase mb-8"
+                  >
+                    Empowering <span className="text-cosmic-blue italic font-serif lowercase font-light">tomorrow&apos;s</span> <br />
+                    Orbital Analysts
+                  </motion.h2>
+                  
+                  <motion.p 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-stellar-grey text-lg md:text-xl leading-relaxed font-light max-w-lg"
+                  >
+                    Institutional-grade satellite tracking data is now accessible for your thesis or lab project. 
+                    <span className="text-white font-medium"> Secure 3 months of complimentary full-stack API access</span> to accelerate your research.
+                  </motion.p>
+                </div>
+
+                {/* API Capabilities Grid */}
+                <div className="grid grid-cols-2 gap-8 pt-10 border-t border-white/10">
+                  {[
+                    { icon: Activity, title: "Propagation", detail: "SGP4 Precision Vectors" },
+                    { icon: Zap, title: "Real-time Feed", detail: "4,576+ Active Objects" },
+                    { icon: Target, title: "Conjunction", detail: "Collision Risk Audit" },
+                    { icon: Cpu, title: "Sensor Fusion", detail: "Global Node Intel" }
+                  ].map((item, i) => (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, y: 5 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.05 * i }}
+                      className="flex items-start space-x-4 group"
+                    >
+                      <div className="p-2.5 bg-white/5 rounded-xl group-hover:bg-blue-500/10 transition-colors border border-white/5 group-hover:border-blue-500/20">
+                        <item.icon className="w-5 h-5 text-cosmic-blue group-hover:text-blue-400 transition-colors" />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-medium text-xs uppercase tracking-wider">{item.title}</h4>
+                        <p className="text-technical text-[10px] mt-1 opacity-50">{item.detail}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Endpoints List - Balanced Position */}
+              <div className="mt-12 group h-auto">
+                <div className="glass-panel p-6 rounded-2xl relative hud-corner overflow-hidden bg-white/[0.01] border-white/5">
+                  <span className="hidden" />
+                  <div className="flex items-center justify-between mb-6">
+                    <h4 className="text-[10px] font-mono font-bold tracking-[0.3em] text-white/40 uppercase flex items-center">
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
+                      Grant-Enabled REST Endpoints
+                    </h4>
+                    <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">v1.2 stable</span>
+                  </div>
+                  <div className="space-y-2 font-mono text-[11px]">
+                    {[
+                      { m: "GET", p: "/v1/position/{id}", l: "Location Matrix" },
+                      { m: "POST", p: "/v1/propagate", l: "Path Prediction" },
+                      { m: "GET", p: "/v1/search", l: "Object Inventory" }
+                    ].map((ep, i) => (
+                      <div key={i} className="flex justify-between items-center p-2.5 hover:bg-white/[0.03] transition-all rounded-xl border border-transparent hover:border-white/10">
+                        <div className="flex space-x-6">
+                          <span className="text-blue-400 font-bold w-10">{ep.m}</span>
+                          <span className="text-white/80 selection:bg-blue-500/30">{ep.p}</span>
+                        </div>
+                        <span className="text-white/20 hidden md:block text-[9px] uppercase tracking-widest font-bold">{ep.l}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Application Form Side - High Commitment Protocol */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="lg:pl-8 h-full"
+            >
+              <div className="glass-panel p-6 sm:p-10 md:p-14 rounded-[2rem] md:rounded-[2.5rem] relative hud-corner border-white/20 shadow-2xl shadow-blue-500/5 bg-zinc-950/20 h-full flex flex-col justify-center">
+                <span className="hidden" />
+                <div className="mb-6 md:mb-12">
+                   <div className="flex items-center space-x-3 mb-3 md:mb-4">
+                     <Lock className="w-3 md:w-4 h-3 md:h-4 text-red-500/80" />
+                     <span className="text-[8px] md:text-[10px] font-mono font-bold tracking-widest text-red-500/80 uppercase">Encrypted Submission Portal</span>
+                   </div>
+                  <h3 className="text-xl md:text-3xl font-medium text-white mb-2 md:mb-3 tracking-tight">Request Access Token</h3>
+                  <p className="text-stellar-grey text-xs md:text-sm font-light">Verify academic status to unlock the institutional infrastructure.</p>
+                </div>
+
+                <form 
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    setFormStatus('submitting');
+                    
+                    const formData = new FormData(e.currentTarget);
+                    formData.append("access_key", "bb0f4dcb-69c1-4766-a2c1-540baa4903b6");
+                    formData.append("subject", `New Student API Grant Request - ${formData.get('university')}`);
+                    formData.append("from_name", "Cryptik Academic Portal");
+
+                    const object = Object.fromEntries(formData);
+                    const json = JSON.stringify(object);
+
+                    try {
+                      const response = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                          Accept: "application/json",
+                        },
+                        body: json,
+                      });
+                      const result = await response.json();
+                      if (result.success) {
+                        setFormStatus('success');
+                        setFormMessage('Application submitted successfully.');
+                        (e.target as HTMLFormElement).reset();
+                      } else {
+                        setFormStatus('error');
+                        setFormMessage(result.message || 'Submission failed.');
+                      }
+                    } catch (error) {
+                      setFormStatus('error');
+                      setFormMessage('A connection error occurred.');
+                    }
+                  }}
+                  className="space-y-4 md:space-y-8"
+                >
+                  {/* Hidden Web3Forms configurations */}
+                  <input type="hidden" name="from_name" value="Cryptik Academic Portal" />
+                  <input type="hidden" name="subject" value="New Student API Grant Request" />
+                  
+                  <div className="space-y-4 md:space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4 md:gap-8">
+                      <div className="space-y-1.5 md:space-y-3">
+                        <label className="text-[8px] md:text-[10px] font-mono font-bold tracking-widest text-white/40 uppercase ml-1">Identity</label>
+                        <input 
+                          type="text" 
+                          name="name"
+                          required
+                          placeholder="Full Name"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-5 focus:outline-none focus:border-blue-500/40 focus:bg-white/[0.08] transition-all text-xs md:text-sm placeholder:text-white/20"
+                        />
+                      </div>
+                      <div className="space-y-1.5 md:space-y-3">
+                        <label className="text-[8px] md:text-[10px] font-mono font-bold tracking-widest text-white/40 uppercase ml-1">Institute Email</label>
+                        <input 
+                          type="email" 
+                          name="email"
+                          required
+                          placeholder="name@university.edu"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-5 focus:outline-none focus:border-blue-500/40 focus:bg-white/[0.08] transition-all text-xs md:text-sm placeholder:text-white/20"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4 md:gap-8">
+                      <div className="space-y-1.5 md:space-y-3">
+                        <label className="text-[8px] md:text-[10px] font-mono font-bold tracking-widest text-white/40 uppercase ml-1">Institution</label>
+                        <input 
+                          type="text" 
+                          name="university"
+                          required
+                          placeholder="University Name"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-5 focus:outline-none focus:border-blue-500/40 focus:bg-white/[0.08] transition-all text-xs md:text-sm placeholder:text-white/20"
+                        />
+                      </div>
+                      <div className="space-y-1.5 md:space-y-3">
+                        <label className="text-[8px] md:text-[10px] font-mono font-bold tracking-widest text-white/40 uppercase ml-1">Terminal</label>
+                        <input 
+                          type="tel" 
+                          name="phone"
+                          required
+                          placeholder="Contact Number"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-5 focus:outline-none focus:border-blue-500/40 focus:bg-white/[0.08] transition-all text-xs md:text-sm placeholder:text-white/20"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1.5 md:space-y-3">
+                      <label className="text-[8px] md:text-[10px] font-mono font-bold tracking-widest text-white/40 uppercase ml-1">Research Objective</label>
+                      <textarea 
+                        name="purpose"
+                        required
+                        rows={3}
+                        placeholder="Detail your research requirements..."
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-5 focus:outline-none focus:border-blue-500/40 focus:bg-white/[0.08] transition-all text-xs md:text-sm resize-none placeholder:text-white/20"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <button 
+                      type="submit"
+                      disabled={formStatus === 'submitting'}
+                      className={`w-full py-4 md:py-6 font-bold uppercase tracking-widest rounded-xl transition-all active:scale-[0.98] text-xs md:text-sm flex items-center justify-center group ${
+                        formStatus === 'success' ? 'bg-emerald-500 text-white' : 
+                        formStatus === 'error' ? 'bg-red-500 text-white' : 
+                        'bg-white text-space-black hover:bg-zinc-200 hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]'
+                      }`}
+                    >
+                      {formStatus === 'submitting' ? 'Authenticating...' : 
+                       formStatus === 'success' ? 'Grant Request Sent' : 
+                       formStatus === 'error' ? 'Retry Submission' : 
+                       'Authenticate and Request'}
+                      <ArrowRight className={`ml-3 md:ml-4 w-4 md:w-5 h-4 md:h-5 group-hover:translate-x-1 transition-transform ${formStatus === 'submitting' ? 'animate-pulse' : ''}`} />
+                    </button>
+
+                    {formStatus !== 'idle' && (
+                      <p className={`text-[9px] text-center mt-4 uppercase font-bold tracking-widest ${
+                        formStatus === 'success' ? 'text-emerald-400' : 
+                        formStatus === 'error' ? 'text-red-400' : 
+                        'text-white/40'
+                      }`}>
+                        {formMessage || (formStatus === 'submitting' ? 'Processing secure channel...' : '')}
+                      </p>
+                    )}
+
+                    <p className="text-[8px] md:text-[10px] text-center text-white/20 font-mono tracking-[0.3em] mt-4 md:mt-8 uppercase">
+                      SECURED ACADEMIC GRANT PROTOCOL • V1.2.4
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats - Cinematic Style - Properly Middle Aligned Section was here */}
+
       {/* Stats - Cinematic Style - Properly Middle Aligned */}
       <section className="py-40 bg-white/[0.02] relative overflow-hidden mt-[-1px]">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -543,6 +804,7 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+      {/* Pinned Popup removed */}
     </main>
   )
 }
