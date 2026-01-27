@@ -7,6 +7,7 @@ import Image from "next/image"
 import Navbar from "@/components/Navbar"
 // import StarField from "@/components/StarField"
 import HeroVideo from "@/components/HeroVideo"
+import GWDAnalysis from "@/components/GWDAnalysis"
 
 import { useState, useRef, FormEvent } from "react"
 
@@ -367,6 +368,8 @@ export default function LandingPage() {
                 </div>
             </div>
           </div>
+          
+          <GWDAnalysis />
         </div>
       </section>
 
