@@ -15,7 +15,6 @@ const api = axios.create({
   timeout: 30000, // 30 seconds timeout
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer test-token`, // Using the test token from the backend
   },
 });
 
@@ -39,6 +38,9 @@ api.interceptors.request.use(
     const token = localStorage.getItem('authToken'); // If you implement auth later
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      // Use the test token for demo purposes
+      config.headers.Authorization = `Bearer test-token`;
     }
     return config;
   },

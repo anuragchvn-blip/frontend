@@ -1,25 +1,36 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import axios from "axios"
+import { ApiService } from "@/utils/api"
 
-const API_BASE = "https://web-production-e4e27.up.railway.app/"
+interface SystemStatus {
+  system_status: string;
+  database_connected: boolean;
+  active_satellites: number;
+  tle_records: number;
+  conjunctions_today: number;
+  high_risk_conjunctions_today: number;
+  last_data_ingestion: string;
+  uptime_minutes: number;
+}
 
 export function useTrackingData() {
-  const [data, setData] = useState<any>(null)
+  const [data, setData] = useState<SystemStatus | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_BASE}/status`, {
-          headers: { Authorization: "Bearer test-token" }
-        })
+        const response = await ApiService.getSystemStatus()
         setData(response.data)
         setLoading(false)
-      } catch (err: any) {
-        setError(err.message)
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message)
+        } else {
+          setError('An unknown error occurred')
+        }
         setLoading(false)
       }
     }
