@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, ChevronRight, Activity, Cpu } from "lucide-react"
+import { X, ChevronRight, Activity, Cpu, Plus } from "lucide-react"
 import { SpaceSystem } from "@/lib/data/space-systems"
 
 
@@ -115,24 +115,100 @@ export default function SystemDetailModal({ system, onClose }: SystemDetailModal
                    </div>
                 </div>
 
-                {/* Right Column: Features */}
-                <div className="md:col-span-2">
-                   <h4 className="text-technical mb-8 text-white/40">SYSTEM CAPABILITIES</h4>
-                   <div className="grid grid-cols-1 gap-8">
-                     {system.features.map((feature, i) => (
-                       <div key={i} className="flex items-start space-x-4">
-                         <div className="mt-1 w-1.5 h-1.5 rounded-full bg-cosmic-blue shrink-0" />
-                         <div>
-                           <h5 className="text-lg font-medium text-white mb-2">{feature.title}</h5>
-                           <p className="text-stellar-grey leading-relaxed text-sm font-light">
-                             {feature.description}
-                           </p>
-                         </div>
-                       </div>
-                     ))}
+                {/* Right Column: Features & Extended Data */}
+                <div className="md:col-span-2 space-y-12">
+                   {/* System Capabilities */}
+                   <div>
+                      <h4 className="text-technical mb-8 text-white/40">SYSTEM CAPABILITIES</h4>
+                      <div className="grid grid-cols-1 gap-8">
+                        {system.features.map((feature, i) => (
+                          <div key={i} className="flex items-start space-x-4">
+                            <div className="mt-1 w-1.5 h-1.5 rounded-full bg-cosmic-blue shrink-0" />
+                            <div>
+                              <h5 className="text-lg font-medium text-white mb-2">{feature.title}</h5>
+                              <p className="text-stellar-grey leading-relaxed text-sm font-light">
+                                {feature.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                    </div>
 
-                   <div className="mt-12 pt-12 border-t border-white/5">
+                   {/* Tools & Systems Table */}
+                   {system.tools && (
+                     <div className="pt-8 border-t border-white/5">
+                        <h4 className="text-technical mb-8 text-white/40">TOOLS & MODULES</h4>
+                        <div className="space-y-4">
+                           <div className="hidden sm:grid grid-cols-3 gap-4 pb-2 border-b border-white/10 text-[10px] uppercase tracking-widest text-zinc-500 font-mono">
+                              <div className="col-span-1">Component</div>
+                              <div className="col-span-2">Strategic Purpose</div>
+                           </div>
+                           {system.tools.map((tool, i) => (
+                             <div key={i} className="flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-4 py-3 sm:py-2 border-b border-white/5 text-sm group">
+                                <div className="col-span-1 font-mono text-cosmic-blue group-hover:text-white transition-colors">{tool.name}</div>
+                                <div className="col-span-2 text-stellar-grey font-light text-xs sm:text-sm">{tool.purpose}</div>
+                             </div>
+                           ))}
+                        </div>
+                     </div>
+                   )}
+
+                   {/* Use Cases & Tech Stack Grid */}
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-white/5">
+                      {/* Use Cases */}
+                      {system.useCases && (
+                        <div>
+                           <h4 className="text-technical mb-6 text-white/40">OPERATIONAL USE CASES</h4>
+                           <ul className="space-y-3">
+                              {system.useCases.map((useCase, i) => (
+                                <li key={i} className="flex items-center text-sm text-stellar-grey font-light">
+                                   <div className="w-1 h-1 bg-zinc-600 rounded-full mr-3" />
+                                   {useCase}
+                                </li>
+                              ))}
+                           </ul>
+                        </div>
+                      )}
+
+                      {/* Tech Stack */}
+                      {system.techStack && (
+                        <div>
+                           <h4 className="text-technical mb-6 text-white/40">TECHNOLOGY STACK</h4>
+                           <div className="space-y-4">
+                              {system.techStack.map((stack, i) => (
+                                <div key={i}>
+                                   <span className="text-[10px] font-mono text-zinc-500 uppercase block mb-1">{stack.category}</span>
+                                   <div className="flex flex-wrap gap-2">
+                                      {stack.items.map((item, j) => (
+                                        <span key={j} className="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 text-white rounded">
+                                           {item}
+                                        </span>
+                                      ))}
+                                   </div>
+                                </div>
+                              ))}
+                           </div>
+                        </div>
+                      )}
+                   </div>
+
+                   {/* Unique Selling Points */}
+                   {system.usp && (
+                      <div className="pt-8 border-t border-white/5">
+                         <h4 className="text-technical mb-6 text-white/40">STRATEGIC ADVANTAGE</h4>
+                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {system.usp.map((usp, i) => (
+                              <div key={i} className="flex items-start gap-3 p-4 bg-cosmic-blue/5 border border-cosmic-blue/10 rounded-lg">
+                                 <Plus className="w-3 h-3 text-cosmic-blue mt-1 shrink-0" />
+                                 <span className="text-[11px] sm:text-xs text-stellar-grey leading-tight">{usp}</span>
+                              </div>
+                            ))}
+                         </div>
+                      </div>
+                   )}
+
+                   <div className="mt-12 pt-6 border-t border-white/5">
                       <button className="btn-pill btn-primary w-full md:w-auto inline-flex justify-center items-center">
                         Request System Access
                         <ChevronRight className="ml-2 w-4 h-4" />

@@ -18,7 +18,7 @@ export default function SystemCard({ system, onSelect, index }: SystemCardProps)
       transition={{ delay: index * 0.05, duration: 0.5 }}
       viewport={{ once: true }}
       onClick={() => onSelect(system)}
-      className="group relative h-[400px] border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 cursor-pointer overflow-hidden flex flex-col justify-between p-8"
+      className="group relative h-[400px] border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 cursor-pointer overflow-hidden flex flex-col justify-between p-6 md:p-8"
     >
       {/* Hover Glow Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-cosmic-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

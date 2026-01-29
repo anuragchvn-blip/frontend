@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar"
 // import StarField from "@/components/StarField"
 import HeroVideo from "@/components/HeroVideo"
 import GWDAnalysis from "@/components/GWDAnalysis"
+import StrategicAdvantage from "@/components/StrategicAdvantage"
 
 import { useState, useRef, FormEvent } from "react"
 
@@ -125,18 +126,18 @@ export default function LandingPage() {
         <div className="grid md:grid-cols-3 gap-0">
           {[
             {
-              title: "Orbital Mapping",
-              desc: "Dynamic 3D visualization of thousands of concurrent objects with high-fidelity path prediction.",
+              title: "High-Fidelity Tracking",
+              desc: "Thousands of objects visualized with industry-standard SGP4 path prediction.",
               icon: Globe,
             },
             {
-              title: "Conjunction Logic",
-              desc: "Automated screening for potential proximity events using standard SGP4 and advanced propagation.",
+              title: "Risk Assessment",
+              desc: "Collision screening using validated Foster, Monte Carlo, and Akella probability methods.",
               icon: Target,
             },
             {
-              title: "Asset Security",
-              desc: "Continuous monitoring and threat weight assessment for high-value governmental and commercial assets.",
+              title: "Threat Intelligence",
+              desc: "Early warning and situational monitoring for vital space and terrestrial infrastructure.",
               icon: Shield,
             },
           ].map((feature, i) => (
@@ -169,17 +170,17 @@ export default function LandingPage() {
             <div className="lg:col-span-12">
               <div className="space-y-16">
                 <p className="text-stellar-grey text-xl md:text-3xl leading-tight font-sans font-light border-l-4 border-white/20 pl-10 max-w-5xl">
-                  SSA Systems is an institutional-grade platform dedicated to comprehensive Space Situational Awareness. 
-                  We provide high-precision tracking, collision avoidance, and strategic monitoring services to sovereign 
-                  and commercial space operators globally.
+                  SSA Systems is an institutional-grade platform built to solve data fragmentation and scaling challenges 
+                  in modern space flight. We fuse orbital mechanics with advanced computer vision and scientific 
+                  signal processing to provide a shared operating picture for global operators.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-16 border-t border-white/10">
                   {[
-                    { title: "Orbital Safety", desc: "Automated conjunction assessment and path prediction using multi-source sensor fusion." },
-                    { title: "Defense Assets", desc: "Specialized monitoring and threat assessment for high-value governmental infrastructure." },
-                    { title: "Technical R&D", desc: "In-house development of multi-spectral image processing and autonomous vision tools." },
-                    { title: "Precision State", desc: "Centimeter-level accuracy in state-vector estimation and orbital propagation." }
+                  { title: "Validated Data", desc: "Integration with Space-Track and CelesTrak for authentic satellite state-vector data streams." },
+                  { title: "Scalable Architecture", desc: "High-throughput ingestion designed for the mega-constellation era, capable of tracking millions of objects." },
+                  { title: "Tactical Warning", desc: "Automated detection and classification of aerial and orbital threats via YOLOv8 and EKF tracking." },
+                  { title: "Scientific Precision", desc: "High-fidelity signal processing using Bayesian inference and matched filtering, validated against real LIGO gravitational wave data." }
                   ].map((item, idx) => (
                     <div key={idx} className="group space-y-4">
                       <h4 className="text-sm font-mono font-bold text-white uppercase tracking-[0.3em]">{item.title}</h4>
@@ -192,6 +193,8 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      <StrategicAdvantage />
 
       {/* Recent Findings - Tsuki Image Processing Showcase */}
       <section className="py-32 bg-space-black relative overflow-hidden mt-[-1px]">

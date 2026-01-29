@@ -12,6 +12,16 @@ export interface SystemFeature {
   description: string
 }
 
+export interface SystemTool {
+  name: string
+  purpose: string
+}
+
+export interface SystemTechStack {
+  category: string
+  items: string[]
+}
+
 export interface SpaceSystem {
   id: string
   title: string
@@ -20,319 +30,465 @@ export interface SpaceSystem {
   status?: "Active" | "In Development" | "Beta"
   metrics: SystemMetric[]
   features: SystemFeature[]
-  visualType: "orb" | "network" | "grid" | "chart" | "alert" | "pipeline" | "pde" | "satellite" // For determining which visual component to render
-  color?: string // Optional override for specific system theming
+  tools?: SystemTool[]
+  useCases?: string[]
+  techStack?: SystemTechStack[]
+  usp?: string[]
+  visualType: "orb" | "network" | "grid" | "chart" | "alert" | "pipeline" | "pde" | "satellite"
+  color?: string
 }
 
 export const spaceSystems: SpaceSystem[] = [
   {
     id: "ssa-cae",
     title: "SSA Conjunction Analysis Engine",
-    tagline: "Real-time collision prevention for orbital assets",
+    tagline: "Core system for real-time collision prevention and risk assessment",
     icon: Globe,
     status: "Active",
     visualType: "orb",
     metrics: [
-      { label: "System Uptime", value: "99.9", unit: "%" },
-      { label: "Response Time", value: "< 1", unit: "s" },
-      { label: "Active Objects", value: "24,000", unit: "+" }
+      { label: "TLE VALIDATIONS", value: "14,285", unit: "/s" },
+      { label: "PC METHODS", value: "3", unit: "(FOSTER/MC/AKELLA)" },
+      { label: "UPTIME", value: "99.99", unit: "%" }
     ],
     features: [
       {
-        title: "High-Fidelity TLE Processing",
-        description: "Ingests and normalizes Two-Line Element sets from multiple sources, correcting for propagation errors and stale epochs."
+        title: "Real-time Propagation",
+        description: "Satellite position propagation using SGP4 standard with validated TLE data ingestion."
       },
       {
-        title: "SGP4 Orbital Propagation",
-        description: "Standardized orbital propagation tailored for LEO/MEO/GEO regimes, ensuring compatibility with Space-Track and Celestrak standards."
+        title: "Conjunction Detection",
+        description: "Automated collision risk screening for satellite pairs across all orbital regimes."
       },
       {
-        title: "Covariance Matrix Analysis",
-        description: "Probabilistic assessment of object positions using full 6x6 covariance matrices to determine accurate collision probabilities."
+        title: "Risk Assessment",
+        description: "Collision probability calculation using Foster, Monte Carlo, and Akella methods."
       },
       {
-        title: "Maneuver Detection",
-        description: "Algorithmic identification of unannounced orbital changes, automatically triggering re-screening of affected assets."
+        title: "Alert Generation",
+        description: "Multi-channel real-time notifications via email, webhook, and WebSocket."
       }
+    ],
+    tools: [
+      { name: "SGP4Engine", purpose: "Orbital propagation using SGP4 standard" },
+      { name: "ConjunctionScreener", purpose: "Collision risk screening for satellite pairs" },
+      { name: "ProbabilityCalculator", purpose: "Pc calculation using Foster, Monte Carlo, Akella methods" },
+      { name: "SpaceTrackClient", purpose: "API integration with Space-Track.org" },
+      { name: "CelestrakClient", purpose: "Alternative TLE data source" },
+      { name: "AlertSystem", purpose: "Multi-channel real-time notifications" },
+      { name: "MultiSatelliteTracker", purpose: "Concurrent tracking of multiple satellites" },
+      { name: "SatelliteVisualization", purpose: "3D Plotly-based orbital visualization" }
+    ],
+    useCases: [
+      "Satellite collision avoidance for operators",
+      "Space traffic management",
+      "Government SSA operations",
+      "Conjunction analysis for mission planning"
+    ],
+    techStack: [
+      { category: "Backend", items: ["FastAPI", "SQLAlchemy", "Pydantic"] },
+      { category: "Database", items: ["PostgreSQL", "Redis"] },
+      { category: "ML", items: ["Scikit-learn", "XGBoost", "SHAP"] },
+      { category: "Visualization", items: ["Plotly.js", "3D Globe"] }
+    ],
+    usp: [
+      "14,285 TLE validations/second throughput",
+      "Multi-source redundancy (Space-Track, CelesTrak, fallback)",
+      "Three probability calculation methods with auto-selection",
+      "Production-grade error handling and recovery"
+    ]
+  },
+  {
+    id: "blue",
+    title: "BLUE - Drone Detection",
+    tagline: "YOLOv8-based airspace monitoring and security",
+    icon: Eye,
+    status: "Active",
+    visualType: "alert",
+    metrics: [
+      { label: "ACCURACY", value: "92", unit: "% (IEEE VALIDATED)" },
+      { label: "LATENCY", value: "REAL-TIME" },
+      { label: "CLASSIFICATIONS", value: "5", unit: "(ITU STANDARDS)" }
+    ],
+    features: [
+      {
+        title: "YOLOv8 Detection",
+        description: "Real-time drone detection and classification (NANO to LARGE) per ITU standards."
+      },
+      {
+        title: "Multi-Object Tracking",
+        description: "Persistent ID tracking using SORT algorithm with motion pattern analysis."
+      },
+      {
+        title: "Automated Reporting",
+        description: "LaTeX/PDF report generation with annotated images and maneuvering detection."
+      },
+      {
+        title: "Airspace Monitoring",
+        description: "Research-validated detection algorithms for high-security critical infrastructure."
+      }
+    ],
+    tools: [
+      { name: "detector.py", purpose: "YOLOv8-based drone detection" },
+      { name: "tracker.py", purpose: "SORT multi-object tracking" },
+      { name: "api.py", purpose: "REST API endpoints" },
+      { name: "report_generator.py", purpose: "LaTeX/PDF report generation" },
+      { name: "config.py", purpose: "Drone classification parameters" },
+      { name: "prepare_data.py", purpose: "Dataset preparation" },
+      { name: "train_drone_detector.py", purpose: "Model training pipeline" }
+    ],
+    useCases: [
+      "Airspace monitoring and security",
+      "Anti-drone defense systems",
+      "Airport and critical infrastructure protection",
+      "Research on UAV detection algorithms"
+    ],
+    techStack: [
+      { category: "ML", items: ["Ultralytics YOLOv8", "OpenCV"] },
+      { category: "Tracking", items: ["SORT algorithm"] },
+      { category: "Reports", items: ["LaTeX", "PDF generation"] }
+    ],
+    usp: [
+      "Research-validated detection algorithm (92% accuracy per IEEE study)",
+      "ITU standards-based drone classification",
+      "Integrated tracking with motion analysis",
+      "Production-ready API with minimal footprint"
     ]
   },
   {
     id: "astra-ssa",
-    title: "ASTRA-SSA",
+    title: "ASTRA-SSA Scalability",
     tagline: "AI-powered space situational awareness at scale",
     icon: Activity,
     status: "Active",
     visualType: "network",
     metrics: [
-      { label: "Propagation Speed", value: "10x", unit: "faster" },
-      { label: "Tracked Objects", value: "100k", unit: "+" },
-      { label: "PINN Accuracy", value: "98.5", unit: "%" }
+      { label: "SCALING", value: "10X+", unit: "FASTER" },
+      { label: "CAPACITY", value: "MILLIONS", unit: "OBJECTS" },
+      { label: "MODEL", value: "PINN", unit: "ACCELERATED" }
     ],
     features: [
       {
-        title: "Typesafe PINN Integration",
-        description: "Uses Physics-Informed Neural Networks to solve orbital mechanics differential equations significantly faster than numerical integrators."
+        title: "PINN Acceleration",
+        description: "Physics-Informed Neural Networks for 10x+ orbital propagation speed improvements."
       },
       {
-        title: "Natural Language Query Interface",
-        description: "LLM-powered interface allowing operators to query complex orbital states using plain English (e.g., 'Show all objects crossing GEO belt')."
+        title: "Million-Object Tracking",
+        description: "Designed for large-scale space catalog management in the mega-constellation era."
       },
       {
-        title: "VarNet Methodology",
-        description: "Variational Network approach for solving inverse problems in orbit determination, reducing the required observation arc length."
+        title: "LLM Analysis",
+        description: "Integration layer for language models for advanced orbital analysis and reports."
       },
       {
-        title: "Production-Grade Scalability",
-        description: "Microservices architecture designed to scale horizontally on Kubernetes, handling the catalog growth of the mega-constellation era."
+        title: "Modular Scaling",
+        description: "High-performance scalability layer for distributed space object monitoring."
       }
+    ],
+    tools: [
+      { name: "physics_engine.py", purpose: "Core physics calculations" },
+      { name: "scalability_layer.py", purpose: "Million-object scaling" },
+      { name: "llm_interface.py", purpose: "LLM integration for analysis" },
+      { name: "benchmarking.py", purpose: "Performance testing" },
+      { name: "encryption.py", purpose: "Security layer" }
+    ],
+    useCases: [
+      "Large-scale space catalog management",
+      "AI-accelerated conjunction screening",
+      "Research on PINN applications in orbital mechanics",
+      "Government/military high-volume processing"
+    ],
+    techStack: [
+      { category: "AI/ML", items: ["Neural Networks", "PINN frameworks"] },
+      { category: "Physics", items: ["Custom orbital mechanics engine"] },
+      { category: "Performance", items: ["Distributed computing"] }
+    ],
+    usp: [
+      "Designed for millions of objects (not just thousands)",
+      "PINN acceleration for 10x+ speed improvement",
+      "LLM integration for advanced analysis",
+      "Research-grade benchmarking framework"
     ]
   },
   {
     id: "amts",
-    title: "Advanced Missile Tracking System",
+    title: "Advanced Missile Tracking",
     tagline: "Multi-domain ballistic threat detection and defense",
     icon: Target,
     status: "Active",
     visualType: "alert",
     metrics: [
-      { label: "Target Confidence", value: "8.8", unit: "/10" },
-      { label: "Trajectory Precision", value: "6", unit: "DOF" },
-      { label: "Sensor Fusion", value: "4", unit: "sources" }
+      { label: "ALGORITHMS", value: "EKF/IMM/MHT" },
+      { label: "PRECISION", value: "6-DOF" },
+      { label: "ENCRYPTION", value: "NSA-SPEC" }
     ],
     features: [
       {
-        title: "Extended Kalman Filter",
-        description: "Non-linear state estimation for tracking ballistic trajectories during boost, midcourse, and terminal phases with high precision."
+        title: "Non-linear Filtering",
+        description: "Extended Kalman Filter (EKF) and Interacting Multiple Model (IMM) tracking for all flight phases."
       },
       {
-        title: "Multi-Hypothesis Tracker",
-        description: "Advanced algorithms to discriminate between actual warheads and decoys/debris clouds using kinematic and signature analysis."
+        title: "Decoy Discrimination",
+        description: "Multi-Hypothesis Tracker (MHT) for discriminating actual warheads from decoys/debris."
       },
       {
-        title: "Integrated Threat Databases",
-        description: "Real-time correlation against known signature databases for rapid classification of launch vehicles and payload types."
+        title: "Atmospheric Modeling",
+        description: "6-DOF trajectory prediction with uncertainty quantification and complex propagation."
       },
       {
-        title: "Battle Management Integration",
-        description: "Direct data link capabilities for C2 systems, providing fire-control quality vectors to interception assets."
+        title: "Defense Coordination",
+        description: "Automated TEWA for multi-layer defense (THAAD, Patriot, Aegis)."
       }
+    ],
+    tools: [
+      { name: "tracking_module.py", purpose: "EKF, IMM, MHT tracking algorithms" },
+      { name: "sensor_fusion.py", purpose: "Multi-domain sensor integration" },
+      { name: "trajectory_prediction.py", purpose: "6-DOF propagation" },
+      { name: "battle_management.py", purpose: "TEWA and defense coordination" },
+      { name: "missile_detector.py", purpose: "Sensor data processing" },
+      { name: "data_integrator.py", purpose: "Multi-source data handling" }
+    ],
+    useCases: [
+      "Ballistic missile defense",
+      "Early warning systems",
+      "Battle management operations",
+      "Defense contractor systems"
+    ],
+    techStack: [
+      { category: "Tracking", items: ["EKF", "IMM", "MHT algorithms"] },
+      { category: "Physics", items: ["6-DOF propagation", "Atmospheric modeling"] },
+      { category: "Defense", items: ["TEWA", "Interceptor guidance"] }
+    ],
+    usp: [
+      "Military-grade tracking algorithms (EKF, IMM, MHT)",
+      "6-DOF trajectory prediction with uncertainty quantification",
+      "Full battle management and weapon assignment",
+      "Real missile database integration (Iran, NKorea launches)"
     ]
   },
   {
-    id: "cas",
-    title: "Conjunction Analysis Subsystem",
-    tagline: "Probabilistic collision risk assessment",
-    icon: Layers,
+    id: "gwd",
+    title: "Gravitational Wave Detector",
+    tagline: "Scientific signal processing for astrophysical events",
+    icon: Radio,
     status: "Active",
     visualType: "chart",
     metrics: [
-      { label: "Screening Rate", value: "Automated", unit: "24/7" },
-      { label: "Uncertainty Quant", value: "Statistical", unit: "σ" },
-      { label: "Alert Latency", value: "Real-time" }
+      { label: "DATA SOURCE", value: "REAL LIGO" },
+      { label: "DETECTIONS", value: "H1/L1", unit: "CHANNELS" },
+      { label: "FRAMEWORK", value: "BILBY" }
     ],
     features: [
       {
-        title: "Advanced Screening Algorithms",
-        description: "optimized 'all-vs-all' screening that quickly filters out non-threatening pairs before performing computationally expensive probability calculations."
+        title: "LIGO Data Processing",
+        description: "Real LIGO data analysis (H1, L1 detectors) with bandpass filtering and whitening."
       },
       {
-        title: "Covariance-Based Calculation",
-        description: "Computes Probability of Collision (Pc) using 3D covariance ellipsoids, accounting for uncertainties in position and velocity."
+        title: "Matched Filtering",
+        description: "Template bank matching for signal detection in binary black hole mergers."
       },
       {
-        title: "Threshold-Based Alerting",
-        description: "Configurable alert thresholds allowing operators to receive notifications only when risk exceeds specific Pc or miss-distance values."
+        title: "Parameter Estimation",
+        description: "Bayesian parameter estimation for event characterization using the Bilby framework."
       },
       {
-        title: "Historical Conjunction Database",
-        description: "Long-term storage of conjunction events for trend analysis and debris density modeling in specific orbital shells."
+        title: "Scientific Publication",
+        description: "Complete pipeline from raw data to publication-ready astrophysical results."
       }
+    ],
+    tools: [
+      { name: "data_handler.py", purpose: "LIGO data loading" },
+      { name: "preprocessing.py", purpose: "Signal preprocessing" },
+      { name: "templates.py", purpose: "Waveform template bank" },
+      { name: "matched_filter.py", purpose: "Matched filtering engine" },
+      { name: "parameter_estimation.py", purpose: "Bayesian parameter estimation" },
+      { name: "visualizer.py", purpose: "Scientific visualization" },
+      { name: "reporter.py", purpose: "Report generation" }
+    ],
+    useCases: [
+      "Gravitational wave astronomy research",
+      "Black hole and neutron star merger studies",
+      "LIGO data analysis",
+      "Scientific publication support"
+    ],
+    techStack: [
+      { category: "Libraries", items: ["Bilby", "GWpy"] },
+      { category: "Analysis", items: ["Matched filtering", "Template banks"] },
+      { category: "Visualization", items: ["Matplotlib", "Scientific plotting"] }
+    ],
+    usp: [
+      "Real LIGO data integration (not synthetic)",
+      "Analysis of actual GW events (GW150914, etc.)",
+      "Complete pipeline from raw data to publication-ready results",
+      "Scientifically validated methods (Bilby framework)"
     ]
   },
   {
-    id: "mstas",
-    title: "Multi-Satellite Tracking & Alert System",
-    tagline: "Comprehensive space object monitoring",
-    icon: Radio,
+    id: "sdd",
+    title: "Space Debris Detection",
+    tagline: "Computer vision for orbital debris cataloging",
+    icon: Satellite,
+    status: "Active",
+    visualType: "satellite",
+    metrics: [
+      { label: "IMAGERY", value: "NASA-SPEC" },
+      { label: "TRAINING", value: "AI-SYNTH" },
+      { label: "ACCURACY", value: "CATALOG-GRADE" }
+    ],
+    features: [
+      {
+        title: "Astronomical Imaging",
+        description: "Processing of NASA debris imagery and astronomical datasets for object identification."
+      },
+      {
+        title: "AI Training Pipeline",
+        description: "Synthetic data generation for ML training to enhance debris detection robustness."
+      },
+      {
+        title: "Detection Pipeline",
+        description: "End-to-end detection and tracking pipeline from raw image ingestion to object cataloging."
+      },
+      {
+        title: "Space Traffic Management",
+        description: "Industrial-grade cataloging for orbital asset protection and collision avoidance."
+      }
+    ],
+    tools: [
+      { name: "pipeline.py", purpose: "Complete detection pipeline" },
+      { name: "image_processor.py", purpose: "Astronomical image preprocessing" },
+      { name: "tracker.py", purpose: "Debris tracking" },
+      { name: "synthetic_generator.py", purpose: "AI training data generation" },
+      { name: "main_pipeline.py", purpose: "Orchestration" }
+    ],
+    useCases: [
+      "Space debris cataloging",
+      "Collision avoidance for spacecraft",
+      "Astronomical research",
+      "Space traffic management"
+    ],
+    techStack: [
+      { category: "Computer Vision", items: ["Image processing algorithms"] },
+      { category: "ML", items: ["Synthetic data generation"] },
+      { category: "Data", items: ["NASA debris imagery"] }
+    ],
+    usp: [
+      "NASA collaboration-ready framework",
+      "Synthetic data generation for ML training",
+      "Complete pipeline from raw images to cataloged detections"
+    ]
+  },
+  {
+    id: "student-api",
+    title: "Cryptik Student API",
+    tagline: "Educational SDK and satellite tracking gateway",
+    icon: Database,
     status: "Active",
     visualType: "grid",
     metrics: [
-      { label: "Tracking Mode", value: "Parallel" },
-      { label: "Data Retention", value: "5", unit: "years" },
-      { label: "API Uptime", value: "99.99", unit: "%" }
+      { label: "SDK", value: "PYTHON" },
+      { label: "UPTIME", value: "99.99", unit: "%" },
+      { label: "DEPLOYMENT", value: "DOCKER" }
     ],
     features: [
       {
-        title: "Parallel Object Tracking",
-        description: "Concurrent monitoring of hundreds of satellites, tailored for constellation operators managing fleet-wide dynamics."
+        title: "Orbital Mechanics SDK",
+        description: "Python client library for state vector calculation, propagation, and pass prediction."
       },
       {
-        title: "Optimized API Architecture",
-        description: "GraphQL and REST endpoints providing low-latency access to state vectors, ephemerides, and conjunction warnings."
+        title: "Educational REST API",
+        description: "FastAPI-based endpoints for satellite catalog access and visibility windows."
       },
       {
-        title: "Tiered Alert System",
-        description: "Priority-based notification system delivering critical alerts via SMS/PagerDuty and routine updates via dashboard/email."
+        title: "Pass Prediction",
+        description: "Highly accurate ground station pass visibility calculation for student learning."
       },
       {
-        title: "Long-Term Data Retention",
-        description: "Warehouse storage for historical orbital data, enabling post-mission analysis and regulatory compliance reporting."
+        title: "Service Mesh Architecture",
+        description: "Production-ready deployment with Docker, Redis caching, and automated TLE refreshes."
       }
-    ]
-  },
-  {
-    id: "ope",
-    title: "Orbital Propagation Engines",
-    tagline: "High-fidelity trajectory prediction",
-    icon: Cpu,
-    status: "Active",
-    visualType: "orb",
-    metrics: [
-      { label: "Models", value: "SGP4/SDP4" },
-      { label: "Epoch Analysis", value: "Multi-Epoch" },
-      { label: "Perturbations", value: "J2-J4" }
     ],
-    features: [
-      {
-        title: "SGP4/SDP4 Implementation",
-        description: "Rigorous implementation of Simplified General Perturbations models for accurate prediction of deep space and near-Earth objects."
-      },
-      {
-        title: "Perturbation Modeling",
-        description: "Accounts for atmospheric drag, solar radiation pressure, and lunar-solar gravitational effects for high-precision long-term propagation."
-      },
-      {
-        title: "Covariance Propagation",
-        description: "Propagates uncertainty alongside the state vector, allowing for realistic error estimations at future epochs."
-      },
-      {
-        title: "State Vector Calculations",
-        description: "Conversion handling between various coordinate frames (TEME, J2000, ECEF) supporting diverse mission requirements."
-      }
-    ]
-  },
-  {
-    id: "sdp",
-    title: "Space Data Pipeline",
-    tagline: "Automated ingestion and processing infrastructure",
-    icon: Database,
-    status: "Active",
-    visualType: "pipeline",
-    metrics: [
-      { label: "Ingestion Sources", value: "12", unit: "+" },
-      { label: "Update Freq", value: "Continuous" },
-      { label: "DB Throughput", value: "High-Vol" }
+    tools: [
+      { name: "main.py", purpose: "FastAPI application" },
+      { name: "api/v1/endpoints", purpose: "REST API endpoints" },
+      { name: "core/", purpose: "Orbital mechanics & SGP4 wrapper" },
+      { name: "services/", purpose: "Analytics, cache, TLE services" },
+      { name: "sdk/", purpose: "Python client library" },
+      { name: "docker/", purpose: "Containerized deployment" },
+      { name: "jobs/", purpose: "Scheduled TLE refresh tasks" }
     ],
-    features: [
-      {
-        title: "Automated TLE Ingestion",
-        description: "Scrapers and API clients that continuously fetch updated TLEs and ephemeris data from Space-Track, Celestrak, and private sensors."
-      },
-      {
-        title: "ETL Pipeline Optimization",
-        description: "Extract, Transform, Load processes optimized for massive orbital datasets, ensuring clean data is available for analytics engines."
-      },
-      {
-        title: "Redundant Database Management",
-        description: "Distributed database architecture ensuring data integrity and availability even during regional outages or maintenance."
-      },
-      {
-        title: "Source Integration Map",
-        description: "Visual lineage tools to track data provenance, critical for audit trails in collision liability assessments."
-      }
-    ]
-  },
-  {
-    id: "mla",
-    title: "Machine Learning Analytics",
-    tagline: "Intelligent anomaly detection and pattern recognition",
-    icon: Eye,
-    status: "Active",
-    visualType: "chart",
-    metrics: [
-      { label: "Anomaly Detection", value: "Automated" },
-      { label: "Pattern Recog", value: "Behavioral" },
-      { label: "Learning", value: "Continuous" }
+    useCases: [
+      "Educational institutions (student learning)",
+      "Commercial satellite operators",
+      "Research organizations",
+      "API integration for custom applications"
     ],
-    features: [
-      {
-        title: "Automated Maneuver Detection",
-        description: "ML models trained to identify non-Keplerian behavior indicative of station-keeping or evasive maneuvers."
-      },
-      {
-        title: "Behavioral Pattern Analysis",
-        description: "Unsupervised learning algorithms that cluster objects by behavioral traits, identifying potential undisclosed military assets."
-      },
-      {
-        title: "Anomaly Classification",
-        description: "Classifies events such as breakups, sensor glitches, or propulsive events based on spectral and kinematic signatures."
-      },
-      {
-        title: "Continuous Learning Pipeline",
-        description: "Feedback loops where analyst verifications retrain the models, constantly improving the system's false positive rate."
-      }
+    techStack: [
+      { category: "Framework", items: ["FastAPI async", "Pydantic"] },
+      { category: "Infrastructure", items: ["Docker", "Redis", "Nginx"] },
+      { category: "Database", items: ["PostgreSQL"] }
+    ],
+    usp: [
+      "Complete SDK for easy third-party integration",
+      "Production deployment ready (Docker, PostgreSQL)",
+      "Educational focus with comprehensive technical docs"
     ]
   },
   {
     id: "varnet",
     title: "VarNet PINN Framework",
-    tagline: "Physics-constrained neural networks for orbital mechanics",
-    icon: Shield, // Reusing Shield as a placeholder for "Physics/Framework"
+    tagline: "Physics-constrained neural networks for PDEs",
+    icon: Cpu,
     status: "Active",
     visualType: "pde",
     metrics: [
-      { label: "Equation Type", value: "PDE/ODE" },
-      { label: "Method", value: "FEM + ML" },
-      { label: "Model Reduction", value: "Active" }
+      { label: "RESEARCH", value: "PEER-VAL" },
+      { label: "ML BASIS", value: "TENSORFLOW" },
+      { label: "TYPE", value: "PDE/ODE" }
     ],
     features: [
       {
-        title: "Partial Differential Equation Solvers",
-        description: "Solving the Hamilton-Jacobi-Bellman equations for optimal control and trajectory design using neural approximations."
+        title: "Variational PDE Solvers",
+        description: "Neural network solvers for Partial Differential Equations based on variational calculus."
       },
       {
-        title: "Finite Element Method Integration",
-        description: "Hybrid architecture combining classical FEM capability with deep learning for specialized structural or thermal analysis."
+        title: "Physics-Informed ML",
+        description: "Framework for constrained machine learning using fundamental physical laws (PINN)."
+      },
+      {
+        title: "Numerical Methods",
+        description: "Hybrid approach combining Finite Element Methods (FEM) with neural approximations."
       },
       {
         title: "Model Order Reduction",
-        description: "Techniques to reduce the computational complexity of high-fidelity physical models while maintaining accuracy for real-time use."
-      },
-      {
-        title: "Operator Theory Implementation",
-        description: "Leveraging Deep Operator Networks (DeepONets) to learn the solution operator of parametric differential equations."
+        description: "Reduced Order Modeling (MOR) for high-fidelity physical simulations at real-time speeds."
       }
-    ]
-  },
-  {
-    id: "tsuki",
-    title: "Tsuki - Space Image Processing",
-    tagline: "Advanced imagery analysis for space domain awareness",
-    icon: Satellite,
-    status: "In Development",
-    visualType: "satellite",
-    metrics: [
-      { label: "Status", value: "Dev" },
-      { label: "Processing", value: "Real-time" },
-      { label: "Spectrum", value: "Multi" }
     ],
-    features: [
-      {
-        title: "Object Detection & Classification",
-        description: "Convolutional Neural Networks (CNNs) tuned to identify satellites and debris in optical and radar imagery."
-      },
-      {
-        title: "Image Enhancement Algorithms",
-        description: "Super-resolution and noise reduction techniques to recover detail from atmospheric distortion or sensor noise."
-      },
-      {
-        title: "Automated Cataloging",
-        description: "Pipeline to automatically update object catalogs based on visual confirmations derived from processed telescope imagery."
-      },
-      {
-        title: "Multi-Spectral Analysis",
-        description: "Fusion of visual, IR, and radar data to characterize material properties and operational status of targets."
-      }
+    tools: [
+      { name: "VarNet.py", purpose: "Main variational network implementation" },
+      { name: "TFModel.py", purpose: "TensorFlow model definition" },
+      { name: "Domain.py", purpose: "PDE domain definitions" },
+      { name: "FiniteElement.py", purpose: "FEM utilities" },
+      { name: "UtilityFunc.py", purpose: "Helper functions" },
+      { name: "Residual_1Dt.py", purpose: "Temporal residual computation" }
+    ],
+    useCases: [
+      "Research on PINN methods and PDE solutions",
+      "Scientific computing and numerical analysis",
+      "Academic/educational purpose PDE solving",
+      "Foundation for ASTRA-SSA scaling work"
+    ],
+    techStack: [
+      { category: "ML", items: ["TensorFlow 1.10.0"] },
+      { category: "Math", items: ["NumPy", "SciPy", "FEM"] },
+      { category: "Methods", items: ["Variational calculus", "DeepONets"] }
+    ],
+    usp: [
+      "Academic research-grade implementation (Duke University based)",
+      "Based on published peer-reviewed variational research",
+      "Comprehensive PDE solving framework",
+      "Core foundation for AI-accelerated orbital mechanics"
     ]
   }
 ]
+
+

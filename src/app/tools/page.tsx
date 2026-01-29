@@ -24,7 +24,7 @@ export default function ToolsPage() {
         {/* Filter/Status Bar */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 border-b border-white/10 pb-4 md:pb-6 gap-4">
             <div className="flex flex-wrap gap-4 md:gap-8 text-xs md:text-sm font-mono text-zinc-500">
-                <span className="text-white border-b-2 border-cosmic-blue pb-4 -mb-4 md:pb-6 md:-mb-6 cursor-pointer">ALL SYSTEMS (9)</span>
+                <span className="text-white border-b-2 border-cosmic-blue pb-4 -mb-4 md:pb-6 md:-mb-6 cursor-pointer">ALL SYSTEMS (8)</span>
                 <span className="hover:text-white cursor-pointer transition-colors">ACTIVE</span>
                 <span className="hover:text-white cursor-pointer transition-colors">IN DEVELOPMENT</span>
             </div>
