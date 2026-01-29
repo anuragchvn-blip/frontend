@@ -3,14 +3,6 @@
 import { useState } from "react"
 import { ApiService } from "@/utils/api"
 
-interface ConjunctionScreeningRequest {
-  primary_norad_id: number;
-  time_window_hours?: number;
-  screening_threshold_km?: number;
-  probability_threshold?: number;
-  include_debris?: boolean;
-}
-
 interface ConjunctionEvent {
   id: number;
   primary_norad_id: number;

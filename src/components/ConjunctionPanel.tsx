@@ -1,9 +1,8 @@
 "use client"
 
-import { Target, Crosshair } from "lucide-react"
+import { Crosshair } from "lucide-react"
 
 import { useState, useEffect } from "react";
-import { useTracking } from "@/context/TrackingContext";
 import { ApiService } from "@/utils/api";
 
 interface ConjunctionEvent {
@@ -20,7 +19,6 @@ interface ConjunctionEvent {
 export default function ConjunctionPanel() {
   const [events, setEvents] = useState<ConjunctionEvent[]>([]);
   const [loading, setLoading] = useState(true);
-  const { systemStatus } = useTracking();
 
   useEffect(() => {
     const fetchConjunctionEvents = async () => {
