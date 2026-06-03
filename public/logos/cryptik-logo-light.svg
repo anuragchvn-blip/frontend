@@ -1,0 +1,10 @@
+<svg id="logo-light" viewBox="350 200 1610 1500" xmlns="http://www.w3.org/2000/svg">
+  <path d="M480 960 A720 720 0 0 1 1920 960" fill="#2B5BE0"></path>
+  <circle cx="800" cy="560" r="16" fill="#1A1A1E"></circle><circle cx="920" cy="680" r="12" fill="#1A1A1E"></circle><circle cx="760" cy="760" r="8" fill="#1A1A1E"></circle><circle cx="1000" cy="520" r="12" fill="#1A1A1E"></circle><circle cx="864" cy="624" r="8" fill="#1A1A1E"></circle><circle cx="1040" cy="640" r="16" fill="#1A1A1E"></circle><circle cx="944" cy="736" r="8" fill="#1A1A1E"></circle><circle cx="1120" cy="576" r="8" fill="#1A1A1E"></circle><circle cx="680" cy="640" r="12" fill="#1A1A1E"></circle>
+  <path d="M864 480 L880 544 L944 560 L880 576 L864 640 L848 576 L784 560 L848 544 Z" fill="#1A1A1E"></path>
+  <path d="M400 1040 Q640 240 1760 400" fill="none" stroke="#E63946" stroke-width="48" stroke-linecap="round"></path>
+  <path d="M1728 320 L1744 384 L1808 400 L1744 416 L1728 480 L1712 416 L1648 400 L1712 384 Z" fill="#E63946"></path>
+  <text x="1200" y="1400" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="384" font-weight="700" fill="#1A1A1E" letter-spacing="16">cryptik</text>
+  <text x="600" y="1640" font-family="'Inter',sans-serif" font-size="112" fill="#1A1A1E">cryptik.tech</text>
+  <ellipse cx="1856" cy="1584" rx="80" ry="56" fill="none" stroke="#1A1A1E" stroke-width="9.6"></ellipse><ellipse cx="1856" cy="1584" rx="32" ry="56" fill="none" stroke="#1A1A1E" stroke-width="6.4"></ellipse><line x1="1776" y1="1584" x2="1936" y2="1584" stroke="#1A1A1E" stroke-width="6.4"></line><line x1="1800" y1="1552" x2="1912" y2="1552" stroke="#1A1A1E" stroke-width="4.8"></line><line x1="1800" y1="1616" x2="1912" y2="1616" stroke="#1A1A1E" stroke-width="4.8"></line>
+</svg>
