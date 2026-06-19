@@ -65,7 +65,7 @@ export default function TermsOfService() {
                 <p className="text-black/70 leading-relaxed">
                   If you have any questions about these Terms, please contact us at:
                   <br />
-                  <a href="mailto:team@cryptik.tech" className="text-blue font-bold hover:underline mt-2 inline-block">team@cryptik.tech</a>
+                  <a href="mailto:team@cryptik.space" className="text-blue font-bold hover:underline mt-2 inline-block">team@cryptik.space</a>
                 </p>
               </section>
             </div>
