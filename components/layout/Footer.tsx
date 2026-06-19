@@ -73,6 +73,9 @@ export function Footer() {
             <div className="flex flex-col gap-5 min-w-[140px]">
               <h4 className="font-sans font-bold text-black/40 text-[11px] tracking-[0.1em] uppercase">Company</h4>
               <div className="flex flex-col gap-3.5">
+                <Link href="/careers" className="flip inline-block w-fit text-black/80 text-[14px] hover:text-black transition-colors">
+                  <FlipText>Careers</FlipText>
+                </Link>
                 <Link href="/legal/tos" className="flip inline-block w-fit text-black/80 text-[14px] hover:text-black transition-colors">
                   <FlipText>Terms of Service</FlipText>
                 </Link>

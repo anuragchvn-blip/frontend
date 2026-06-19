@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { label: "company", href: "/#cta" },
   { label: "mission", href: "/#features" },
+  { label: "careers", href: "/careers" },
   { label: "contact", href: "mailto:anurag@cryptik.space" },
 ];
 
