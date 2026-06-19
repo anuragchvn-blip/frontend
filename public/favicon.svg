@@ -1,0 +1,26 @@
+<svg id="logo-icon" viewBox="380 -120 1560 1560" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .star-element {
+      fill: #1A1A1E;
+      transition: fill 0.3s ease;
+    }
+    @media (prefers-color-scheme: dark) {
+      .star-element {
+        fill: #F5ECD7;
+      }
+    }
+  </style>
+  <path d="M480 960 A720 720 0 0 1 1920 960" fill="#2B5BE0"></path>
+  <circle cx="800" cy="560" r="16" class="star-element"></circle>
+  <circle cx="920" cy="680" r="12" class="star-element"></circle>
+  <circle cx="760" cy="760" r="8" class="star-element"></circle>
+  <circle cx="1000" cy="520" r="12" class="star-element"></circle>
+  <circle cx="864" cy="624" r="8" class="star-element"></circle>
+  <circle cx="1040" cy="640" r="16" class="star-element"></circle>
+  <circle cx="944" cy="736" r="8" class="star-element"></circle>
+  <circle cx="1120" cy="576" r="8" class="star-element"></circle>
+  <circle cx="680" cy="640" r="12" class="star-element"></circle>
+  <path d="M864 480 L880 544 L944 560 L880 576 L864 640 L848 576 L784 560 L848 544 Z" class="star-element"></path>
+  <path d="M400 1040 Q640 240 1760 400" fill="none" stroke="#E63946" stroke-width="48" stroke-linecap="round"></path>
+  <path d="M1728 320 L1744 384 L1808 400 L1744 416 L1728 480 L1712 416 L1648 400 L1712 384 Z" fill="#E63946"></path>
+</svg>
