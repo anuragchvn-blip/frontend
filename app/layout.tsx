@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>
+        <Analytics />
       </body>
     </html>
   );
