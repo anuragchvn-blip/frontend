@@ -1,0 +1,22 @@
+# Cryptik
+
+> Advanced onboard systems for spacecraft navigation, orbit determination, and real-time state estimation.
+
+## About Cryptik
+Cryptik develops next-generation hardware and software solutions to solve the onboard navigation problem in space. Our systems fuse optical/thermal imagery with multi-sensor telemetry to ensure continuous, high-precision guidance even during GNSS dropouts and eclipses.
+
+## Products & Technology
+- **Orbit Determination**: Real-time onboard orbital state calculation.
+- **Sensor Fusion**: Fusing GNSS, inertial measurement units (IMUs), and camera inputs.
+- **Eclipse Navigation**: Visible and thermal imaging fusion to hold tracking locks when visible sensors lose the sun.
+
+## Careers & Team
+We are building a world-class team of spacecraft system engineers and hardware researchers.
+- **System Engineer**: Focuses on physical satellite structures, CubeSat integration, thermal shielding, and power distribution systems (EPS).
+- **Hardware Researcher**: Focuses on custom circuit design, board layout, sensor interfacing, and precision hardware integration.
+- **Location**: Based in a sunlit villa headquarters designed for deep focus and physical testing.
+
+## Contact & Links
+- **Email**: team@cryptik.space
+- **Careers Page**: [/careers](https://cryptik.space/careers)
+- **Legal & Privacy**: [/legal/privacy](https://cryptik.space/legal/privacy), [/legal/tos](https://cryptik.space/legal/tos)

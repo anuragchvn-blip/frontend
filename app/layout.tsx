@@ -15,15 +15,13 @@ const inter = Inter({
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 
 export const metadata: Metadata = {
-  title: "Cryptik",
+  title: "Cryptik | Onboard Space Navigation & State Estimation",
+  description: "Cryptik develops next-generation onboard systems for orbit determination, multi-sensor fusion, and real-time state estimation to enable reliable spacecraft navigation.",
+  keywords: "onboard navigation, space navigation, orbit determination, state estimation, sensor fusion, spacecraft, satellite tracking, GNSS-denied navigation",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
-  },
-  robots: {
-    index: false,
-    follow: false,
   },
 };
 
