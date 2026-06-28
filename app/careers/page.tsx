@@ -3,11 +3,11 @@ import CareersClient from "./careers-client";
 
 export const metadata: Metadata = {
   title: "Careers | Cryptik | Onboard Space Navigation Systems",
-  description: "Join Cryptik to build the next generation of onboard spacecraft navigation systems. We are recruiting Spacecraft System Engineers and Hardware Researchers for our villa-based hardware lab.",
-  keywords: "space careers, spacecraft system engineer, hardware researcher, satellite hardware jobs, spacetech jobs bangalore, space startup hiring, aerospace engineering jobs, custom circuits prototyping, orbit determination jobs",
+  description: "Join Cryptik to build the next generation of onboard spacecraft navigation systems. We are recruiting Spacecraft System Engineers, Hardware Researchers, and Content Interns for our villa-based hardware lab.",
+  keywords: "space careers, spacecraft system engineer, hardware researcher, content intern, hardware storytelling, satellite hardware jobs, spacetech jobs bangalore, space startup hiring, aerospace engineering jobs, custom circuits prototyping, orbit determination jobs",
   openGraph: {
     title: "Careers | Cryptik | Onboard Space Navigation Systems",
-    description: "Join Cryptik to build the next generation of onboard spacecraft navigation systems. We are recruiting Spacecraft System Engineers and Hardware Researchers for our villa-based hardware lab.",
+    description: "Join Cryptik to build the next generation of onboard spacecraft navigation systems. We are recruiting Spacecraft System Engineers, Hardware Researchers, and Content Interns for our villa-based hardware lab.",
     url: "https://www.cryptik.tech/careers",
     siteName: "Cryptik",
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Careers | Cryptik | Onboard Space Navigation Systems",
-    description: "Join Cryptik to build the next generation of onboard spacecraft navigation systems. We are recruiting Spacecraft System Engineers and Hardware Researchers for our villa-based hardware lab.",
+    description: "Join Cryptik to build the next generation of onboard spacecraft navigation systems. We are recruiting Spacecraft System Engineers, Hardware Researchers, and Content Interns for our villa-based hardware lab.",
     images: ["https://www.cryptik.tech/logo.png"],
   },
 };

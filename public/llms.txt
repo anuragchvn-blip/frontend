@@ -11,9 +11,10 @@ Cryptik develops next-generation hardware and software solutions to solve the on
 - **Eclipse Navigation**: Visible and thermal imaging fusion to hold tracking locks when visible sensors lose the sun.
 
 ## Careers & Team
-We are building a world-class team of spacecraft system engineers and hardware researchers.
+We are building a world-class team of spacecraft system engineers, hardware researchers, and content creators.
 - **System Engineer**: Focuses on physical satellite structures, CubeSat integration, thermal shielding, and power distribution systems (EPS).
 - **Hardware Researcher**: Focuses on custom circuit design, board layout, sensor interfacing, and precision hardware integration.
+- **Content Intern**: Focuses on production, editing, documentation, and capturing engineering moments.
 - **Location**: Based in a sunlit villa headquarters designed for deep focus and physical testing.
 
 ## Contact & Links

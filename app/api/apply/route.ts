@@ -8,6 +8,8 @@ export async function POST(request: Request) {
       ? "System Engineer (Spacecraft)" 
       : role === "hardware-researcher" 
       ? "Hardware Researcher" 
+      : role === "content-intern"
+      ? "Content Intern"
       : "Other";
 
     const resendKey = process.env.RESEND_API_KEY;

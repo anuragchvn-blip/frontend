@@ -326,6 +326,60 @@ export default function CareersClient() {
                 </NoiseBackground>
               </motion.div>
 
+              {/* Content Intern (Media & Production) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.24 }}
+                className="group relative h-full"
+              >
+                <NoiseBackground
+                  containerClassName="w-full h-full p-1 rounded-2xl flex flex-col"
+                  className="flex flex-1 flex-col h-full"
+                  gradientColors={["rgba(245, 158, 11, 0.15)", "rgba(251, 191, 36, 0.15)", "rgba(245, 158, 11, 0.1)"]}
+                  noiseIntensity={0.12}
+                  speed={0.1}
+                >
+                  <div className="relative flex flex-1 flex-col overflow-hidden rounded-xl border border-white/60 bg-[#FDFCFB] p-6 shadow-[0_16px_38px_rgba(0,0,0,0.07)] md:p-8">
+                    <div className="flex justify-between items-center mb-4">
+                      <h3 className="font-display text-lg font-bold text-black">
+                        Content Intern
+                      </h3>
+                      
+                      {/* Premium Badge */}
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-black/5 bg-white/50 text-[10px] font-bold text-black/60 uppercase tracking-widest">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                        Media & Production
+                      </span>
+                    </div>
+
+                    <p className="text-sm leading-relaxed text-black/60 mb-6">
+                      For hands-on videographers, editors, and technical writers. You will work directly with our engineering team to capture high-fidelity media, write lab logs, and produce educational spacetech content.
+                    </p>
+                    
+                    <ul className="space-y-3 mt-auto text-sm text-black/70">
+                      <li className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
+                        <span>Film and edit high-quality reels, shorts, and video updates of active hardware tests.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
+                        <span>Maintain clean, detailed weekly laboratory logs and documentation updates.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
+                        <span>Collaborate on designing visuals, branding materials, and production assets.</span>
+                      </li>
+                    </ul>
+
+                    <div className="mt-8 pt-6 border-t border-black/5 text-xs text-black/40 italic">
+                      * If you are eager to learn, love recording cool engineering builds, and have an eye for clean media, apply here.
+                    </div>
+                  </div>
+                </NoiseBackground>
+              </motion.div>
+
             </div>
           </div>
 
@@ -397,7 +451,7 @@ export default function CareersClient() {
                       <span className="text-xs font-semibold text-black/50 uppercase tracking-wider">
                         Target Role
                       </span>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         
                         <button
                           type="button"
@@ -433,6 +487,22 @@ export default function CareersClient() {
 
                         <button
                           type="button"
+                          onClick={() => setFormData({ ...formData, role: "content-intern" })}
+                          className={`text-left p-4 rounded-xl border transition-all ${
+                            formData.role === "content-intern"
+                              ? "bg-white border-amber-500 text-amber-500 font-semibold shadow-[0_2px_12px_rgba(245,158,11,0.08)]"
+                              : "bg-white/55 border-black/10 text-black/60 hover:bg-white hover:text-black"
+                          }`}
+                        >
+                          <div className="flex items-center gap-1.5 mb-1.5">
+                            <span className={`w-1.5 h-1.5 rounded-full ${formData.role === "content-intern" ? "bg-amber-500 animate-pulse" : "bg-black/20"}`} />
+                            <span className="text-[9px] font-semibold uppercase tracking-wider text-black/40">Internship</span>
+                          </div>
+                          <div className="text-[13px] tracking-wide font-medium">Content Intern</div>
+                        </button>
+
+                        <button
+                          type="button"
                           onClick={() => setFormData({ ...formData, role: "other" })}
                           className={`text-left p-4 rounded-xl border transition-all ${
                             formData.role === "other"
@@ -453,7 +523,9 @@ export default function CareersClient() {
                     {/* Coolest thing built */}
                     <div className="flex flex-col gap-2">
                       <label htmlFor="coolestThing" className="text-xs font-semibold text-black/50 uppercase tracking-wider">
-                        Tell us about the coolest thing you've built or researched
+                        {formData.role === "content-intern"
+                          ? "Tell us about the coolest project, video, or story you've produced"
+                          : "Tell us about the coolest thing you've built or researched"}
                       </label>
                       <textarea
                         id="coolestThing"
@@ -461,7 +533,9 @@ export default function CareersClient() {
                         rows={4}
                         value={formData.coolestThing}
                         onChange={(e) => setFormData({ ...formData, coolestThing: e.target.value })}
-                        placeholder="I designed custom circuit boards, debugged sensor communications, or constructed custom chassis brackets..."
+                        placeholder={formData.role === "content-intern"
+                          ? "I filmed and edited hardware tests, wrote technical blogs, designed graphics, or produced social media content..."
+                          : "I designed custom circuit boards, debugged sensor communications, or constructed custom chassis brackets..."}
                         className="w-full bg-white/70 border border-black/10 rounded-xl px-4 py-3 text-sm text-black placeholder-black/35 outline-none transition-all focus:border-blue focus:bg-white focus:ring-1 focus:ring-blue resize-y"
                       />
                     </div>
@@ -469,7 +543,9 @@ export default function CareersClient() {
                     {/* Work links */}
                     <div className="flex flex-col gap-2">
                       <label htmlFor="workLink" className="text-xs font-semibold text-black/50 uppercase tracking-wider">
-                        Link to your work (GitHub, site, or resume)
+                        {formData.role === "content-intern" 
+                          ? "Link to your portfolio and media presence" 
+                          : "Link to your work (GitHub, site, or resume)"}
                       </label>
                       <input
                         type="text"
@@ -477,7 +553,9 @@ export default function CareersClient() {
                         name="workLink"
                         value={formData.workLink}
                         onChange={(e) => setFormData({ ...formData, workLink: e.target.value })}
-                        placeholder="github.com/username or your portfolio url"
+                        placeholder={formData.role === "content-intern"
+                          ? "instagram.com/username, behance.net/username, or your portfolio url"
+                          : "github.com/username or your portfolio url"}
                         className="w-full bg-white/70 border border-black/10 rounded-xl px-4 py-3 text-sm text-black placeholder-black/35 outline-none transition-all focus:border-blue focus:bg-white focus:ring-1 focus:ring-blue"
                       />
                     </div>
